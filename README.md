@@ -11,11 +11,11 @@ The mishmash items:
 
 * **Delete features using ModifyFeature control**:
 
-  Extends the ModifyFeature control behavior to allow delete the feature that have been selected for modification. 
+  Extends the ModifyFeature control behavior to allow delete by del-key the feature that have been selected for modification. 
   See example [modify-feature.html](http://jorix.github.com/OL-Ragbag/examples/modify-feature.html)
 
 
-* **Load KML StyleMap with "normal" and "highlight" styles**:
+* **Extends KML format to load StyleMap with "normal" and "highlight" styles**:
 
   See example [sundials.html](http://jorix.github.com/OL-Ragbag/examples/sundials.html)
 

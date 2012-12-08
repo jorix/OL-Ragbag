@@ -3,25 +3,29 @@
 
 /**
  * Class: releaseEnvironment
+ *
+ * Loads OpenLayers from 2.9 to 2.12 &amp; dev releases and can choose between
+ *     the compressed version or lib and add patches or not.
+ *
+ * THIS CODE IS ONLY INTENDED TO HELP MAKE TESTS AND DEBUGGING.
  */
 /**
  * Constructor: releaseEnvironment
  *
  * Loads selected OpenLayers release as instructed in URL parameters.
  *
- * THIS CODE IS ONLY INTENDED TO HELP MAKE TESTS AND DEBUGGING.
- *
  * URL parameters:
- *  - release: ["dev", "2.12" ... "2.9"]
- *  - lib: Use lib for debug (true if lib=\w+)
- *  - patch: Use aditional sources on `patches` option (true if patch=\w+)
+ *  - release: "dev", "2.12" ... "2.9"
+ *  - lib: Use lib for debug (true if `lib` parameter exists in the URL)
+ *  - patch: Use aditional sources on `patches` option (true if `patch`
+ *      parameter exists in the URL)
  *
  * Parameters:
  * options - {Object}
  *
  * Valid options:
- * defaults - {Object} To determine the default values if no URL parameters
- *      (release, lib, patch).
+ * defaults - {Object} To determine the default values without any URL
+ *      parameters: `release`, `lib`, `patch`.
  * patches - Array({String}) List of sources patch.
  *
  * Example:

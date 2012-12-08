@@ -9,8 +9,14 @@
     <link rel="stylesheet" href="http://jorix.github.com/OL-FeaturePopups/github-pages/forkme_banner.css" type="text/css">
     
     <title>Example of OpenLayers to load KML data & StyleMap with "normal" and "highlight" styles</title>
-    <link rel="stylesheet" href="http://www.openlayers.org/dev/theme/default/style.css" type="text/css">
-    <link rel="stylesheet" href="http://www.openlayers.org/dev/examples/style.css" type="text/css">
+    <script src="../dev/releaseEnvirontment.js"></script>
+    <script>
+        var release = new releaseEnvironment({
+            defaults: {patch: true}, 
+            patches: ["../lib/Ragbag/Format/KML-patch.js"]
+        });
+        release.writeScripts();
+    </script>
     <style type="text/css">
         html, body {
             height: 100%;
@@ -23,8 +29,6 @@
         .olPopup p { margin:0px; font-size: .9em;}
         .olPopup h2 { font-size:1.2em; }
     </style>
-    <script src="http://www.openlayers.org/dev/OpenLayers.js"></script>
-    <script src="../lib/Ragbag/Format/KML-patch.js"></script>
     
     <script type="text/javascript">
         var lon = 5;
@@ -96,18 +100,13 @@
     </script>
   </head>
   <body onload="init()">
-    <h1 id="title">Example of OpenLayers to load KML data & StyleMap with "normal" and "highlight" styles</h1>
+    <h1 id="title">??</h1>
     <a id="forkme_banner" href="https://github.com/jorix/OL-Ragbag">View on GitHub</a>
-
-    <div id="tags">
-        kml, popup, feature, StyleMap, highlight
-    </div>
-    <p id="shortdesc">
-      Demonstrates loading a KML extracting attributes and <b>StyleMap</b> with <b>"normal" and "highlight"</b> styles</b>.
-    </p>
+    <div id="environmentForm"></div>
+    <script>
+        release.writeSelectionForm("environmentForm", "title");
+    </script>
 
     <div id="map" class="smallmap"></div>
-
-    <div id="docs"></div>
   </body>
 </html>

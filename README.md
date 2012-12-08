@@ -24,4 +24,6 @@ Compatibility with OpenLayers releases:
 The components (if not stated otherwise in component description) works correctly with release 2.11 or higher
 including the development version.
 
-NOTE: Most of the examples used are adaptations of OpenLayers examples (this examples have their original name)
+NOTES: 
+ * Most of the examples used are adaptations of OpenLayers examples (this examples have their original name)
+ * Use examples for development if you want to try a example using another OL release or unpatched, the examples of development has the same name with the suffix `-dev`.

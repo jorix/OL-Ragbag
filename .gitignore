@@ -1,2 +1,6 @@
 /tools
 /build
+/doc/_scripts/NaturalDocs.bat
+/doc/Ragbag/api/_config/Data
+/doc/Ragbag/all/_config/Data
+/doc/dev-releaseEnvirontment/_config/Data

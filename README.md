@@ -9,10 +9,11 @@ This components can also be used in a custom compressed [build](http://docs.open
 The mishmash items:
 ------------------
 
-* **Delete features using ModifyFeature control**:
+* **Improve ModifyFeature control using keys "del" and "esc"**:
 
-  Extends the ModifyFeature control behavior to allow delete by del-key the feature that have been selected for modification. 
-  See example [modify-feature.html](http://jorix.github.com/OL-Ragbag/examples/modify-feature.html)
+  * Extends the ModifyFeature control behavior to allow delete by del-key the feature that have been selected for modification.
+  * Cancel vertex drag pressing esc-key.
+  * See example [modify-feature.html](http://jorix.github.com/OL-Ragbag/examples/modify-feature.html)
 
 
 * **Extends KML format to load StyleMap with "normal" and "highlight" styles**:

@@ -88,7 +88,7 @@ function toggleControl(element) {
 // Functions to change the behavior of modify control
 function toggleDelKeyMode(element) {
     if (element.checked) {
-        controls.modify.deleteKeyMode = element.value;
+        controls.modify.featureDelkeyMode = element.value;
     }
 }
 function updateModifyControl() {

@@ -18,7 +18,7 @@ var sundials = new OpenLayers.Layer.Vector("KML", {
                 // 4 normal cluster
                 {zoomRange: [5, 6], settings:{distance: 50, threshold: 4}},
                 {zoomRange: [7, 7], settings:{enabled: false}},
-                {zoomRange: [8, 9], settings:{distance: 100, threshold: null}}
+                {zoomRange: [8, 9], settings:{distance: 100}}
             ]
         })
     ],

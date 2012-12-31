@@ -76,7 +76,7 @@ function onFeatureSelect(event) {
     if (content.search("<script") != -1) {
         content = "Content contained Javascript! Escaped content below.<br>" + content.replace(/</g, "&lt;");
     }
-    popup = new OpenLayers.Popup.FramedCloud("chicken", 
+    var popup = new OpenLayers.Popup.FramedCloud("chicken", 
                              feature.geometry.getBounds().getCenterLonLat(),
                              new OpenLayers.Size(100,100),
                              content,

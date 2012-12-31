@@ -15,10 +15,18 @@ The mishmash items:
   * Cancel vertex drag pressing esc-key.
   * See example [modify-feature.html](http://jorix.github.com/OL-Ragbag/examples/modify-feature.html)
 
-
 * **Extends KML format to load StyleMap with "normal" and "highlight" styles**:
 
   See example [sundials.html](http://jorix.github.com/OL-Ragbag/examples/sundials.html)
+
+* **Improve Cluster strategy to allow uncluster and use adaptive settings depending on the level of zoom**:
+
+  * New methods `enable` and  `disable` that alow cluster an uncluster the features.
+  * New properties:
+    * enabled: if false the features are shown unclustered.
+    * zoomSettings: allows different settings depending on the zoom ranges (allowed settings: `enabled`, `distance` and `threshold`)
+  * See example [sundials-cluster.html](http://jorix.github.com/OL-Ragbag/examples/sundials-cluster.html)
+  * **Warning**: currently in development, be sympathetic ;-)
 
 Compatibility with OpenLayers releases:
 --------------------------------------

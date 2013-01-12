@@ -9,17 +9,17 @@ This components can also be used in a custom compressed [build](http://docs.open
 The components:
 ---------------
 
-* **Improve ModifyFeature control using keys "del" and "esc"**:
+**Improve ModifyFeature control using keys "del" and "esc"**:
 
   * Extends the ModifyFeature control behavior to allow delete the feature that have been selected for modification (by del-key).
   * Cancel vertex drag pressing esc-key.
   * See example [modify-feature.html](http://jorix.github.com/OL-Ragbag/examples/modify-feature.html)
 
-* **Extends KML format to load StyleMap with "normal" and "highlight" styles**:
+**Extends KML format to load StyleMap with "normal" and "highlight" styles**:
 
   * See example [sundials.html](http://jorix.github.com/OL-Ragbag/examples/sundials.html)
 
-* **Improve Cluster strategy to allow uncluster and use adaptive settings depending on the level of zoom**:
+**Improve Cluster strategy to allow uncluster and use adaptive settings depending on the level of zoom**:
 
   * New methods `enable` and  `disable` that alow cluster and uncluster the features.
   * New properties:

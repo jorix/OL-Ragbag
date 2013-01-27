@@ -8,19 +8,20 @@ var map = new OpenLayers.Map({
     }
 });
 
+var _centeredCluster = new OpenLayers.Strategy.CenteredCluster({
+    zoomSettings: [
+        {zoomRange: [3, 3], settings:{enabled: false}},
+        // 4 normal cluster
+        {zoomRange: [5, 6], settings:{distance: 50, threshold: 4}},
+        {zoomRange: [7, 7], settings:{enabled: false}},
+        {zoomRange: [8, 9], settings:{distance: 100}}
+    ]
+});
 var sundials = new OpenLayers.Layer.Vector("KML", {
     projection: map.displayProjection,
     strategies: [
         new OpenLayers.Strategy.Fixed(),
-        new OpenLayers.Strategy.Cluster({
-            zoomSettings: [
-                {zoomRange: [3, 3], settings:{enabled: false}},
-                // 4 normal cluster
-                {zoomRange: [5, 6], settings:{distance: 50, threshold: 4}},
-                {zoomRange: [7, 7], settings:{enabled: false}},
-                {zoomRange: [8, 9], settings:{distance: 100}}
-            ]
-        })
+        _centeredCluster
     ],
     styleMap: new OpenLayers.StyleMap({
         'default': new OpenLayers.Style({
@@ -64,6 +65,16 @@ sundials.events.on({
 map.addControl(select);
 select.activate();
 
+var _butonOnofcluster =document.getElementById("onofcluster")
+_butonOnofcluster.onclick = function() {
+    if (_centeredCluster.active) {
+        _centeredCluster.deactivate();
+        _butonOnofcluster.innerHTML = "Activate";
+    } else {
+        _centeredCluster.activate();
+        _butonOnofcluster.innerHTML = "Deactivate";
+    }
+};
 
 function onPopupClose(evt) {
     select.unselectAll();

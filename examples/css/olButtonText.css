@@ -1,0 +1,19 @@
+/* Generic button text */
+div.olButtonTextItemActive,
+div.olButtonTextItemInactive {
+    border: 1px solid #888;
+    width: 50px;
+    height: 20px;
+    border-radius: 4px;
+    background-image: none;
+    text-align: center;
+    font-weight: bold;
+    color: #888;
+}
+div.olButtonTextItemActive {
+    background-color: #fb0;
+    color: #333;
+}
+div.olButtonTextItemInactive {
+    background-color: #ddd;
+}

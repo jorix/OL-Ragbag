@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="lang" content="en" />
+        <meta name="author" content="Jorix" />
+        <meta name="description" content="Usage example of CenteredCluster strategy for OpenLayers to group the features in a centered clusters." />
+        <meta name="keywords" content="OpenLayers, Cluster, Strategy, centered">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="http://jorix.github.com/OL-Ragbag/examples/github-pages/forkme_banner.css" type="text/css">
+        <link rel="stylesheet" href="http://www.openlayers.org/dev/theme/default/style.css" type="text/css">
+        <link rel="stylesheet" href="http://www.openlayers.org/dev/examples/style.css" type="text/css">
+
+        <script src="http://www.openlayers.org/dev/OpenLayers.js"></script>
+        <script src="../lib/Ragbag/Strategy/CenteredCluster.js"></script>
+        <title>Centered Cluster Strategy for OpenLayers</title>
+        <style type="text/css">
+            dl {
+                padding-left: 2em;
+            }
+            #reset {
+                margin-left: 2em;
+            }
+        </style>
+        <script src="../lib/OpenLayers.js"></script>
+        
+    </head>
+    <body>
+        <h1 id="title">Centered Cluster Strategy for OpenLayers</h1>
+        <a id="forkme_banner" href="https://github.com/jorix/OL-CenteredCluster">View on GitHub</a>
+        <div id="tags">
+            vector, feature, stylemap, wfs, cluster, strategy, cleanup
+        </div>         
+        <p id="shortdesc">
+            Timed (see console) and compares operation strategies between OL Cluster and CenteredCluster.
+        </p>
+        <div id="map" class="smallmap"></div>
+        <p>Change behavior:</p>
+        <dl>
+            <dd>
+                <input id="distance" name="distance" type="text" value="20" size="3" />
+                <label for="distance">distance</label>
+            </dd>
+            <dd>
+                <input id="threshold" name="threshold" type="text" value="" size="3" />
+                <label for="threshold">threshold</label>
+            </dd>
+            <dd>
+                <input id="centered" name="centered" type="checkbox" checked="checked"  />
+                <label for="centered">centered</label>
+            </dd>
+        </dl>
+        <button id="reset">recluster</button>
+        <hr>
+        <p>
+            View the <a href="strategy-centered-cluster-log-timed.js" target="_blank">strategy-centered-cluster-log-timed.js</a>
+            and <a href="strategy-cluster-log-timed.js" target="_blank">strategy-centered-log-timed.js</a>
+            source to see how this is done.
+        </p>
+        <script src="strategy-cluster-log-timed.js"></script>
+        <script src="strategy-centered-cluster-log-timed.js"></script>
+    </body>
+</html>

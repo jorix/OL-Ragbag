@@ -8,16 +8,16 @@
     <meta name="keywords" content="OpenLayers, cluster, uncluster, enable, disable, zoom" />
     <link rel="stylesheet" href="http://jorix.github.com/OL-Ragbag/examples/github-pages/forkme_banner.css" type="text/css">
     
-    <title>Example of OpenLayers to demonstrate the use of clustering with adaptive settings depending on the level of zoom.</title>
+    <title>Example to demonstrate use of clustering with adaptive settings depending on the level of zoom.</title>
 
     <script src="../dev/releaseEnvirontment.js"></script>
     <script>
         var release = new releaseEnvironment({
-            defaults: {patch: true}, 
-            patches: ["../lib/Ragbag/Strategy/Cluster-patch.js"]
+            defaults: {patch: true}
         });
         release.writeScripts();
     </script>
+    <script src="../lib/Ragbag/Strategy/CenteredCluster.js"></script>
 
     <style type="text/css">
         html, body {
@@ -46,7 +46,8 @@
 
     <div id="docs">
         <p>
-            Current zoom level: <span id="zoomLevel">?</span> |
+            Current zoom level: <span id="zoomLevel">?</span> | 
+            <a href="#" id="onofcluster" >Deativate</a>|
             View the <a href="sundials-cluster.js" target="_blank">sundials-cluster.js</a> 
             source to see how this is done.
         </p>

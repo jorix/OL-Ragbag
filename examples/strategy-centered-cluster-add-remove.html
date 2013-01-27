@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="lang" content="en">
+        <meta name="author" content="Jorix">
+        <meta name="description" content="Example of CenteredCluster strategy for OpenLayers that allows add and remove individual features.">
+        <meta name="keywords" content="OpenLayers, CenteredCluster, add, remove">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="http://jorix.github.com/OL-Ragbag/examples/github-pages/forkme_banner.css" type="text/css">
+
+        <title>Usage example of CenteredCluster for OpenLayers</title>
+
+        <link rel="stylesheet" href="http://www.openlayers.org/dev/theme/default/style.css" type="text/css">
+        <link rel="stylesheet" href="http://www.openlayers.org/dev/examples/style.css" type="text/css">
+        <link rel="stylesheet" href="css/olButtonText.css" type="text/css">
+        <style>
+            div.olControlDeleteFeatureItemActive {
+                background-image: url(http://www.openlayers.org/dev/theme/default/img/remove_point_on.png);
+                background-position: 0px 0px;
+            }
+            div.olControlDeleteFeatureItemInactive {
+                background-image: url(http://www.openlayers.org/dev/theme/default/img/remove_point_off.png);
+                background-position: 0px 0px;
+            }
+            /* olControlCluster as button text */
+            div.olControlCluster:after {
+                content:"Cluster";
+            }
+            div.olControlCluster {
+                width: 60px;
+            }
+        </style>
+
+        <script src="http://www.openlayers.org/dev/OpenLayers.js"></script>
+        <script src="../lib/Ragbag/Strategy/CenteredCluster.js"></script>
+    </head>
+
+    <body>
+        <h1 id="title">Usage example of CenteredCluster for OpenLayers</h1>
+        <a id="forkme_banner" href="https://github.com/jorix/OL-GhostNodes">View on GitHub</a>
+        <div id="tags">cluster add remove features</div>
+        <p id="shortdesc">
+            Example of CenteredCluster strategy for OpenLayers that allows add and remove individual features.
+        </p>
+        <div id="map" style="width: 600px; height: 500px;" class="smallmap"></div>
+        <div id="docs">
+            <p>
+                View the <a href="strategy-centered-cluster-add-remove.js" target="_blank">strategy-centered-cluster-add-remove.js</a> 
+                source to see how this is done.
+            </p>
+        </div>
+
+        <script src="strategy-centered-cluster-add-remove.js"></script>
+    </body>
+</html>
+
+

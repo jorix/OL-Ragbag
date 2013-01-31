@@ -81,6 +81,7 @@ panel.addControls([
         title: "Clusters on/off",
         type: OpenLayers.Control.TYPE_TOGGLE,
         displayClass: "olControlCluster olButtonText",
+        draw: function() {}, // nothing to draw.
         eventListeners: {
             activate: function() {
                 _centeredCluster.activate();

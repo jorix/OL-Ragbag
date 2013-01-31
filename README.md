@@ -27,7 +27,7 @@ The components:
     * *candidateMatches*: optional function that replaces the OL `shouldCluster` (see [strategy-cluster-extended.html](http://jorix.github.com/OL-Ragbag/examples/strategy-cluster-extended.html))
     * *enabled*: if false the features are shown unclustered.
     * *zoomSettings*: allows different settings depending on the zoom ranges (allowed settings: `enabled`, `distance` and `threshold`)
-  * See examples: [sundials-cluster.html](http://jorix.github.com/OL-Ragbag/examples/sundials-cluster.html)  [strategy-centered-cluster-add-remove.html](http://jorix.github.com/OL-Ragbag/examples/strategy-centered-cluster-add-remove.html)
+  * See examples: [sundials-cluster.html](http://jorix.github.com/OL-Ragbag/examples/sundials-cluster.html) and [strategy-centered-cluster-add-remove.html](http://jorix.github.com/OL-Ragbag/examples/strategy-centered-cluster-add-remove.html)
 
 Compatibility with OpenLayers releases:
 --------------------------------------

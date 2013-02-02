@@ -15,7 +15,7 @@ The components:
   * Cancel vertex drag pressing esc-key.
   * See example [modify-feature.html](http://jorix.github.com/OL-Ragbag/examples/modify-feature.html)
 
-## Extends KML format to load StyleMap with "normal" and "highlight" styles
+## Extends KML format to load StyleMap with *"normal"* and *"highlight"*
 
   * See example [sundials.html](http://jorix.github.com/OL-Ragbag/examples/sundials.html)
 

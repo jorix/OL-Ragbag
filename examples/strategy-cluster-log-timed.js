@@ -11,6 +11,7 @@ var getMinMaxDistances = function(strategy) {
         centerDisplacement = 0,
         cLen = clusters.length,
         cCount = 0,
+        cFeaturesCount = 0,
         chk = {};
     for (var i = 0; i < cLen; i++) {
         var cluster = clusters[i],
@@ -35,6 +36,7 @@ var getMinMaxDistances = function(strategy) {
             var ccLen = cc.length,
                 xSum = 0,
                 ySum = 0;
+            cFeaturesCount += ccLen;
             for (var ii = 0; ii < ccLen; ii++) {
                 var feature = cc[ii];
                 if (feature.geometry) {
@@ -61,6 +63,8 @@ var getMinMaxDistances = function(strategy) {
         lenChk++;
     }
     return {
+        clusterCount: cCount,
+        clusterFaturesCount: cFeaturesCount,
         minClusterDistance: minClusterDistance,
         maxFeatureDistance: maxFeatureDistance,
         maxCenterDisplacement: maxCenterDisplacement,
@@ -78,23 +82,26 @@ function createTimedStrategy(strategy, options) {
         var finalTime = new Date();
         if (_strategy.features && _strategy.features.length && console && console.log) {
             if (!_logStarted) {
-                console.log('; zoom; time; clusters; features; count; minClusterDistance; maxFeatureDistance; maxCenterDisplacement; centerDisplacement; class;');
+                console.log('; zoom; time; clusters; clusteredFeatures; features/cluster; minClusterDistance; maxFeatureDistance; maxCenterDisplacement; centerDisplacement; class; distance; threshold; features;');
                 _logStarted = true;
             }
             var distances = getMinMaxDistances(_strategy);
             console.log(
                 '; ' + _strategy.layer.map.getZoom() +
                 '; ' + (finalTime.getTime() - initialTime.getTime()) +
-                '; ' + _strategy.layer.features.length +
-                '; ' + (_strategy.features.length === distances.lenChk ?
-                        _strategy.features.length :
-                        'WARNING: ' + _strategy.features.length + '!==' + distances.lenChk) +
-                '; ' + (_strategy.features.length / _strategy.layer.features.length).toFixed(1) +
+                '; ' + distances.clusterCount +
+                '; ' + distances.clusterFaturesCount +
+                '; ' + (distances.clusterFaturesCount / distances.clusterCount).toFixed(1) +
                 '; ' + distances.minClusterDistance.toFixed(3) +
                 '; ' + distances.maxFeatureDistance.toFixed(3) +
                 '; ' + distances.maxCenterDisplacement.toFixed(5) +
                 '; ' + distances.centerDisplacement.toFixed(5) +
                 '; ' + _strategy.CLASS_NAME.replace('OpenLayers.Strategy.', '') +
+                '; ' + _strategy.distance +
+                '; ' + _strategy.threshold +
+                '; ' + (_strategy.features.length === distances.lenChk ?
+                        _strategy.features.length :
+                        'WARNING: ' + _strategy.features.length + '!==' + distances.lenChk) +
                 ';'
             );
         }

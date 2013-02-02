@@ -71,7 +71,7 @@ function createTimedStrategy(strategy, options) {
         var initialTime = new Date();
         _cluster.apply(_strategy, arguments);
         var finalTime = new Date();
-        if (_strategy.features && console && console.log) {
+        if (_strategy.features && _strategy.features.length && console && console.log) {
             if (!_logStarted) {
                 console.log('; zoom; time; clusters; features; count; minClusterDistance; maxFeatureDistance; maxCenterDisplacement; centerDisplacement; class;');
                 _logStarted = true;
@@ -81,7 +81,9 @@ function createTimedStrategy(strategy, options) {
                 '; ' + _strategy.layer.map.getZoom() +
                 '; ' + (finalTime.getTime() - initialTime.getTime()) +
                 '; ' + _strategy.layer.features.length +
-                '; ' + _strategy.features.length + ' ' + distances.lenChk +
+                '; ' + (_strategy.features.length === distances.lenChk ?
+                        _strategy.features.length :
+                        'WARNING: ' + _strategy.features.length + '!==' + distances.lenChk) +
                 '; ' + (_strategy.features.length / _strategy.layer.features.length).toFixed(1) +
                 '; ' + distances.minClusterDistance.toFixed(3) +
                 '; ' + distances.maxFeatureDistance.toFixed(3) +

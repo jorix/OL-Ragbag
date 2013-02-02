@@ -10,11 +10,11 @@ var map = new OpenLayers.Map({
 
 var _centeredCluster = new OpenLayers.Strategy.CenteredCluster({
     zoomSettings: [
-        {zoomRange: [3, 3], settings:{enabled: false}},
-        // 4 normal cluster
-        {zoomRange: [5, 6], settings:{distance: 50, threshold: 4}},
-        {zoomRange: [7, 7], settings:{enabled: false}},
-        {zoomRange: [8, 9], settings:{distance: 100}}
+        {zoomRange: [0, 2], settings:{distance: 100}},
+        {zoomRange: [3, 4], settings:{distance: 50}},
+        // 5 normal clusters
+        {zoomRange: [6, 7], settings:{threshold: 2}},
+        {zoomRange: [8, 99], settings:{enabled: false}}
     ]
 });
 var sundials = new OpenLayers.Layer.Vector("KML", {

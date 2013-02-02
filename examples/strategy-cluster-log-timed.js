@@ -10,24 +10,28 @@ var getMinMaxDistances = function(strategy) {
         maxCenterDisplacement = 0,
         centerDisplacement = 0,
         cLen = clusters.length,
+        cCount = 0,
         chk = {};
     for (var i = 0; i < cLen; i++) {
-        var ii,
-            cluster = clusters[i],
-            cCenter = cluster.geometry.getBounds().getCenterLonLat(),
-            x = cCenter.lon,
-            y = cCenter.lat;
-        // Cluster distances
-        for (ii = 0; ii < i; ii++) {
-            var ccCenter = clusters[ii].geometry.getBounds().getCenterLonLat();
-            minClusterDistance = Math.min(
-                minClusterDistance,
-                getDistance(x - ccCenter.lon, y - ccCenter.lat)
-            );
-        }
-        // Feature distances
-        var cc = cluster.cluster;
+        var cluster = clusters[i],
+            cc = cluster.cluster;
         if (cc) {
+            var ii,
+                cCenter = cluster.geometry.getBounds().getCenterLonLat(),
+                x = cCenter.lon,
+                y = cCenter.lat;
+            // Cluster distances
+            for (ii = 0; ii < i; ii++) {
+                var ccFeature = clusters[ii];
+                if (ccFeature.cluster) {
+                    var ccCenter = ccFeature.geometry.getBounds().getCenterLonLat();
+                    minClusterDistance = Math.min(
+                        minClusterDistance,
+                        getDistance(x - ccCenter.lon, y - ccCenter.lat)
+                    );
+                }
+            }
+        // Feature distances
             var ccLen = cc.length,
                 xSum = 0,
                 ySum = 0;
@@ -44,12 +48,13 @@ var getMinMaxDistances = function(strategy) {
                 }
                 chk[feature.id] = 1;
             }
+            cCount++;
+            var auxDisp = getDistance(x - xSum / ccLen, y - ySum / ccLen);
+            centerDisplacement += auxDisp;
+            maxCenterDisplacement = Math.max(maxCenterDisplacement, auxDisp);
         } else {
             chk[cluster.id] = 1;
         }
-        var auxDisp = getDistance(x - xSum / ccLen, y - ySum / ccLen);
-        centerDisplacement += auxDisp;
-        maxCenterDisplacement = Math.max(maxCenterDisplacement, auxDisp);
     }
     var lenChk = 0;
     for (var key in chk) {
@@ -59,7 +64,7 @@ var getMinMaxDistances = function(strategy) {
         minClusterDistance: minClusterDistance,
         maxFeatureDistance: maxFeatureDistance,
         maxCenterDisplacement: maxCenterDisplacement,
-        centerDisplacement: centerDisplacement / cLen,
+        centerDisplacement: centerDisplacement / cCount,
         lenChk: lenChk
     };
 };

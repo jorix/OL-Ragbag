@@ -25,7 +25,8 @@ var getMinMaxDistances = function(strategy) {
             for (ii = 0; ii < i; ii++) {
                 var ccFeature = clusters[ii];
                 if (ccFeature.cluster) {
-                    var ccCenter = ccFeature.geometry.getBounds().getCenterLonLat();
+                    var ccCenter = ccFeature.geometry.getBounds()
+                                                             .getCenterLonLat();
                     minClusterDistance = Math.min(
                         minClusterDistance,
                         getDistance(x - ccCenter.lon, y - ccCenter.lat)
@@ -40,7 +41,8 @@ var getMinMaxDistances = function(strategy) {
             for (var ii = 0; ii < ccLen; ii++) {
                 var feature = cc[ii];
                 if (feature.geometry) {
-                    var fCenter = feature.geometry.getBounds().getCenterLonLat();
+                    var fCenter = feature.geometry.getBounds()
+                                                             .getCenterLonLat();
                     xSum += fCenter.lon;
                     ySum += fCenter.lat;
                     maxFeatureDistance = Math.max(
@@ -80,9 +82,14 @@ function createTimedStrategy(strategy, options) {
         var initialTime = new Date();
         _cluster.apply(_strategy, arguments);
         var finalTime = new Date();
-        if (_strategy.features && _strategy.features.length && console && console.log) {
+        if (_strategy.features && _strategy.features.length && console &&
+                                                                  console.log) {
             if (!_logStarted) {
-                console.log('; zoom; time; clusters; clusteredFeatures; features/cluster; minClusterDistance; maxFeatureDistance; maxCenterDisplacement; centerDisplacement; class; distance; threshold; features;');
+                console.log('; zoom; time; clusters; clusteredFeatures;' +
+                    ' features/cluster;' +
+                    ' minClusterDistance; maxFeatureDistance;' +
+                    ' maxCenterDisplacement; centerDisplacement;' +
+                    ' class; distance; threshold; features;');
                 _logStarted = true;
             }
             var distances = getMinMaxDistances(_strategy);
@@ -91,17 +98,20 @@ function createTimedStrategy(strategy, options) {
                 '; ' + (finalTime.getTime() - initialTime.getTime()) +
                 '; ' + distances.clusterCount +
                 '; ' + distances.clusterFaturesCount +
-                '; ' + (distances.clusterFaturesCount / distances.clusterCount).toFixed(1) +
+                '; ' + (distances.clusterFaturesCount / distances.clusterCount)
+                                                                   .toFixed(1) +
                 '; ' + distances.minClusterDistance.toFixed(3) +
                 '; ' + distances.maxFeatureDistance.toFixed(3) +
                 '; ' + distances.maxCenterDisplacement.toFixed(5) +
                 '; ' + distances.centerDisplacement.toFixed(5) +
-                '; ' + _strategy.CLASS_NAME.replace('OpenLayers.Strategy.', '') +
+                '; ' + _strategy.CLASS_NAME
+                                          .replace('OpenLayers.Strategy.', '') +
                 '; ' + _strategy.distance +
                 '; ' + _strategy.threshold +
                 '; ' + (_strategy.features.length === distances.lenChk ?
                         _strategy.features.length :
-                        'WARNING: ' + _strategy.features.length + '!==' + distances.lenChk) +
+                        'WARNING: ' + _strategy.features.length + '!==' +
+                                                             distances.lenChk) +
                 ';'
             );
         }

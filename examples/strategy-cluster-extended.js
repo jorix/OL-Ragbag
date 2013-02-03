@@ -3,11 +3,11 @@ var map, vectorlayer, features, stylemap, select;
 
 // wrap the instanciation code in an anonymous function that gets executed
 // immeadeately
-(function(){
+(function() {
 
-    // The function that gets called on feature selection: shows information 
-    // about the feature/cluser in a div on the page 
-    var showInformation = function(evt){
+    // The function that gets called on feature selection: shows information
+    // about the feature/cluser in a div on the page
+    var showInformation = function(evt) {
         var feature = evt.feature;
         var info = 'Last hovered feature:<br>';
         if (feature.cluster) {
@@ -22,7 +22,7 @@ var map, vectorlayer, features, stylemap, select;
                 var feat = feature.cluster[i];
                 clazzes[feat.attributes.clazz]++;
             }
-            for (var j=1; j<=4; j++) {
+            for (var j = 1; j <= 4; j++) {
                 var plural_s = (clazzes[j] !== 1) ? 's' : '';
                 info += '<br>&nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;clazz ' + j + ': ' + clazzes[j] + ' feature' + plural_s;
             }
@@ -32,28 +32,28 @@ var map, vectorlayer, features, stylemap, select;
         document.getElementById('info').innerHTML = info;
     };
 
-    // The function that gets called on feature selection. Shows information 
+    // The function that gets called on feature selection. Shows information
     // about the number of "points" on the map.
     var updateGeneralInformation = function() {
         var info = 'Currently ' + vectorlayer.features.length + ' points are shown on the map.';
         document.getElementById('generalinfo').innerHTML = info;
     };
-    
+
     // instanciate the map
-    map = new OpenLayers.Map("map");
-    
+    map = new OpenLayers.Map('map');
+
     // background WMS
-    var ol_wms = new OpenLayers.Layer.WMS("OpenLayers WMS", "http://vmap0.tiles.osgeo.org/wms/vmap0", {
-        layers: "basic"
+    var ol_wms = new OpenLayers.Layer.WMS('OpenLayers WMS', 'http://vmap0.tiles.osgeo.org/wms/vmap0', {
+        layers: 'basic'
     });
-    
+
     // context to style the vectorlayer
     var context = {
-        getColor: function(feature){
+        getColor: function(feature) {
             var color = '#aaaaaa';
             if (feature.attributes.clazz && feature.attributes.clazz === 4) {
                 color = '#ee0000';
-            } else if(feature.cluster) {
+            } else if (feature.cluster) {
                 var onlyFour = true;
                 for (var i = 0; i < feature.cluster.length; i++) {
                     if (onlyFour && feature.cluster[i].attributes.clazz !== 4) {
@@ -67,14 +67,14 @@ var map, vectorlayer, features, stylemap, select;
             return color;
         }
     };
-    
+
     // style the vectorlayer
     stylemap = new OpenLayers.StyleMap({
         'default': new OpenLayers.Style({
             pointRadius: 5,
-            fillColor: "${getColor}",
+            fillColor: '${getColor}',
             fillOpacity: 0.7,
-            strokeColor: "#666666",
+            strokeColor: '#666666',
             strokeWidth: 1,
             strokeOpacity: 1,
             graphicZIndex: 1
@@ -83,31 +83,31 @@ var map, vectorlayer, features, stylemap, select;
         }),
         'select' : new OpenLayers.Style({
             pointRadius: 5,
-            fillColor: "#ffff00",
+            fillColor: '#ffff00',
             fillOpacity: 1,
-            strokeColor: "#666666",
+            strokeColor: '#666666',
             strokeWidth: 1,
             strokeOpacity: 1,
             graphicZIndex: 2
         })
     });
-    
+
     // the vectorlayer
     vectorlayer = new OpenLayers.Layer.Vector('Vectorlayer',
                                           {styleMap: stylemap, strategies: []});
-    
+
     // the select control
     select = new OpenLayers.Control.SelectFeature(
         vectorlayer, {hover: true}
     );
     map.addControl(select);
     select.activate();
-    vectorlayer.events.on({"featureselected": showInformation});
-    
+    vectorlayer.events.on({'featureselected': showInformation});
+
     map.addLayers([ol_wms, vectorlayer]);
     map.addControl(new OpenLayers.Control.LayerSwitcher());
     map.zoomToMaxExtent();
-    
+
     features = [];
     // adding lots of features:
     for (var i = 0; i < 700; i++) {
@@ -115,7 +115,7 @@ var map, vectorlayer, features, stylemap, select;
         var r2 = Math.random();
         var r3 = Math.random();
         var r4 = Math.random();
-        var px = r1 * 180 * ((r2 < 0.5) ? -1 : 1); 
+        var px = r1 * 180 * ((r2 < 0.5) ? -1 : 1);
         var py = r3 * 90 * ((r4 < 0.5) ? -1 : 1);
         var p = new OpenLayers.Geometry.Point(px, py);
         var clazz = (i % 10 === 0) ? 4 : Math.ceil(r4 * 3);
@@ -125,11 +125,11 @@ var map, vectorlayer, features, stylemap, select;
     vectorlayer.addFeatures(features);
     updateGeneralInformation();
 
-    // the behaviour and methods for the radioboxes    
+    // the behaviour and methods for the radioboxes
     var changeStrategy = function() {
         var strategies = [];
         // this is the checkbox
-        switch(this.value) {
+        switch (this.value) {
             case 'cluster':
                 // standard clustering
                 strategies.push(new OpenLayers.Strategy.CenteredCluster());
@@ -137,24 +137,24 @@ var map, vectorlayer, features, stylemap, select;
             case 'attribute-cluster':
                 // use the custom class: only cluster features of the same clazz
                 strategies.push(new OpenLayers.Strategy.CenteredCluster({
-                    attribute:'clazz',
+                    attribute: 'clazz',
                     candidateMatches: function(clusterFeatures, feature) {
-                        var cc_attrval = 
+                        var cc_attrval =
                                   clusterFeatures[0].attributes[this.attribute];
                         var fc_attrval = feature.attributes[this.attribute];
                         return cc_attrval === fc_attrval;
                     },
-                    CLASS_NAME: "OpenLayers.Strategy.C_AttributeCluster"
+                    CLASS_NAME: 'OpenLayers.Strategy.C_AttributeCluster'
                 }));
                 break;
             case 'rule-cluster':
-                // use the custom class: only cluster features that have a 
+                // use the custom class: only cluster features that have a
                 // clazz smaller than 4
                 strategies.push(new OpenLayers.Strategy.CenteredCluster({
                     rule: new OpenLayers.Rule({
                         filter: new OpenLayers.Filter.Comparison({
                             type: OpenLayers.Filter.Comparison.LESS_THAN,
-                            property: "clazz",
+                            property: 'clazz',
                             value: 4
                         })
                     }),
@@ -162,7 +162,7 @@ var map, vectorlayer, features, stylemap, select;
                         return this.rule.evaluate(clusterFeatures[0]) &&
                                this.rule.evaluate(feature);
                     },
-                    CLASS_NAME: "OpenLayers.Strategy.C_RuleCluster"
+                    CLASS_NAME: 'OpenLayers.Strategy.C_RuleCluster'
                 }));
                 break;
         }
@@ -171,7 +171,7 @@ var map, vectorlayer, features, stylemap, select;
         map.removeControl(select);
         // rebuild layer
         vectorlayer = new OpenLayers.Layer.Vector('Vectorlayer', {styleMap: stylemap, strategies: strategies});
-        map.addLayer( vectorlayer );
+        map.addLayer(vectorlayer);
         vectorlayer.addFeatures(features);
         // rebuild select control
         select = new OpenLayers.Control.SelectFeature(
@@ -179,13 +179,13 @@ var map, vectorlayer, features, stylemap, select;
         );
         map.addControl(select);
         select.activate();
-        vectorlayer.events.on({"featureselected": showInformation});
+        vectorlayer.events.on({'featureselected': showInformation});
         // update meta information
         updateGeneralInformation();
     };
     // bind the behviour to the radios
     var inputs = document.getElementsByTagName('input');
-    for( var cnt = 0; cnt < inputs.length; cnt++) {
+    for (var cnt = 0; cnt < inputs.length; cnt++) {
       var input = inputs[cnt];
       if (input.name === 'strategy') {
          input.onclick = changeStrategy;

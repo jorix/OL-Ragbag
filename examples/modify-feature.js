@@ -3,7 +3,9 @@
 
 // Allow testing of specific renderers via "?renderer=Canvas", etc
 var renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
-OpenLayers.Layer.Vector.prototype.renderers = renderer ? [renderer] : OpenLayers.Layer.Vector.prototype.renderers;
+OpenLayers.Layer.Vector.prototype.renderers = renderer ?
+                                    [renderer] :
+                                    OpenLayers.Layer.Vector.prototype.renderers;
 
 OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '3';
 
@@ -13,7 +15,7 @@ OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '3';
 // To report draw modify and delete events
 var reportEvent;
 if (console && console.log) {
-    reportEvent = function (event) {
+    reportEvent = function(event) {
         console.log(event.type,
                     event.feature ? event.feature.id : event.components);
     };
@@ -22,28 +24,28 @@ if (console && console.log) {
 }
 
 // Create the vectorial layer
-var vectorLayer = new OpenLayers.Layer.Vector("Vector Layer");
+var vectorLayer = new OpenLayers.Layer.Vector('Vector Layer');
 vectorLayer.events.on({
-    "beforefeaturemodified": reportEvent,
-    "featuremodified": function (e) {
+    'beforefeaturemodified': reportEvent,
+    'featuremodified': function(e) {
         e.feature.state = OpenLayers.State.UPDATE;
         reportEvent(e);
     },
-    "afterfeaturemodified": reportEvent,
-    "beforefeatureremoved": reportEvent,
-    "featureremoved": reportEvent,
-    "vertexmodified": reportEvent,
-    "sketchmodified": reportEvent,
-    "sketchstarted": reportEvent,
-    "sketchcomplete": reportEvent
+    'afterfeaturemodified': reportEvent,
+    'beforefeatureremoved': reportEvent,
+    'featureremoved': reportEvent,
+    'vertexmodified': reportEvent,
+    'sketchmodified': reportEvent,
+    'sketchstarted': reportEvent,
+    'sketchcomplete': reportEvent
 });
 
 // Create and show the map
 var map = new OpenLayers.Map({
     div: 'map',
     layers: [
-        new OpenLayers.Layer.WMS("osgeo WMS", 
-                  "http://vmap0.tiles.osgeo.org/wms/vmap0?", {layers: 'basic'}),
+        new OpenLayers.Layer.WMS('osgeo WMS',
+                  'http://vmap0.tiles.osgeo.org/wms/vmap0?', {layers: 'basic'}),
         vectorLayer
     ]
 });
@@ -60,13 +62,13 @@ var controls = {
     modify: new OpenLayers.Control.ModifyFeature(vectorLayer, {
         deferDelete: true,
         eventListeners: {
-            "beforefeaturedeleted": reportEvent,
-            "featuredeleted": reportEvent
+            'beforefeaturedeleted': reportEvent,
+            'featuredeleted': reportEvent
         }
     })
 };
 // add this controls to the map
-for(var key in controls) {
+for (var key in controls) {
     map.addControl(controls[key]);
 }
 
@@ -92,24 +94,26 @@ function toggleDelKeyMode(element) {
     }
 }
 function updateModifyControl() {
-    var rotate = document.getElementById("rotate").checked;
-    var resize = document.getElementById("resize").checked;
-    var drag = document.getElementById("drag").checked;
-    controls.modify.createVertices = document.getElementById("createVertices").checked;
+    var rotate = document.getElementById('rotate').checked;
+    var resize = document.getElementById('resize').checked;
+    var drag = document.getElementById('drag').checked;
+    controls.modify.createVertices = document.getElementById('createVertices')
+                                                                       .checked;
 
     // reset modification mode
     controls.modify.mode = OpenLayers.Control.ModifyFeature.RESHAPE;
-    if(rotate) {
+    if (rotate) {
         controls.modify.mode |= OpenLayers.Control.ModifyFeature.ROTATE;
     }
-    if(resize) {
+    if (resize) {
         controls.modify.mode |= OpenLayers.Control.ModifyFeature.RESIZE;
-        var keepAspectRatio = document.getElementById("keepAspectRatio").checked;
+        var keepAspectRatio = document.getElementById('keepAspectRatio')
+                                                                       .checked;
         if (keepAspectRatio) {
             controls.modify.mode &= ~OpenLayers.Control.ModifyFeature.RESHAPE;
         }
     }
-    if(drag) {
+    if (drag) {
         controls.modify.mode |= OpenLayers.Control.ModifyFeature.DRAG;
     }
     if (rotate || drag) {

@@ -6,7 +6,7 @@ var map = new OpenLayers.Map({
 map.setCenter(new OpenLayers.LonLat(0, 0), 3);
 
 // Crate styleMap for the clustered vectorial layer
-var clusterStyle =  new OpenLayers.StyleMap({ // l'estil
+var clusterStyle = new OpenLayers.StyleMap({ // l'estil
     'default': new OpenLayers.Style({
             pointRadius: '${radius}',
             fillOpacity: 0.5,
@@ -15,7 +15,7 @@ var clusterStyle =  new OpenLayers.StyleMap({ // l'estil
             label: '${count}',
             labelOutlineWidth: 1,
 
-            fontSize: "10px"
+            fontSize: '10px'
         }, {
             context: {
                 radius: function(feature) {
@@ -38,9 +38,9 @@ var _centeredCluster = new OpenLayers.Strategy.CenteredCluster({
     autoActivate: false,
     threshold: 2
 });
-var vectorLayer = new OpenLayers.Layer.Vector("Features", {
+var vectorLayer = new OpenLayers.Layer.Vector('Features', {
     strategies: [_centeredCluster],
-    styleMap: clusterStyle,
+    styleMap: clusterStyle
 });
 
 // Add layers to map
@@ -58,7 +58,7 @@ var DeleteFeature = OpenLayers.Class(OpenLayers.Control, {
     clickFeature: function(feature) {
         this.layer.destroyFeatures([feature]);
     },
-    CLASS_NAME: "OpenLayers.Control.DeleteFeature"
+    CLASS_NAME: 'OpenLayers.Control.DeleteFeature'
 });
 
 // Add some editing tools to a panel
@@ -69,18 +69,18 @@ var panel = new OpenLayers.Control.Panel({
 panel.addControls([
     new DeleteFeature(vectorLayer, {
         // To add as a button on a panel:
-        title: "Delete Feature"
+        title: 'Delete Feature'
     }),
     new OpenLayers.Control.DrawFeature(vectorLayer, OpenLayers.Handler.Point, {
         // To add as a button on a panel:
-        title: "Draw Point",
-        displayClass: "olControlDrawFeaturePoint"
+        title: 'Draw Point',
+        displayClass: 'olControlDrawFeaturePoint'
     }),
     new OpenLayers.Control({
         // To add as a button on a panel to activate/deactivate the clusters.
-        title: "Clusters on/off",
+        title: 'Clusters on/off',
         type: OpenLayers.Control.TYPE_TOGGLE,
-        displayClass: "olControlCluster olButtonText",
+        displayClass: 'olControlCluster olButtonText',
         draw: function() {}, // nothing to draw.
         eventListeners: {
             activate: function() {

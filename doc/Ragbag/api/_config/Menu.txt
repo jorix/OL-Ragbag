@@ -50,5 +50,7 @@ Don't Index: General, Functions, Classes, Properties
 # --------------------------------------------------------------------------
 
 
+Constructor Index: Constructor
 File: Control.ModifyFeature  (Ragbag\Control\ModifyFeature-patch.js)
 File: Format.KML  (Ragbag\Format\KML-patch.js)
+File: Strategy.CenteredCluster  (Ragbag\Strategy\CenteredCluster.js)

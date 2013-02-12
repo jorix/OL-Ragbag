@@ -7,8 +7,10 @@ var getMinMaxDistances = function(strategy) {
     var clusters = strategy.layer.features;
     var minClusterDistance = 9999999,
         maxFeatureDistance = 0,
-        maxCenterDisplacement = 0,
+        centerDisplacementOver10pc = 0,
         centerDisplacement = 0,
+        maxCenterDisplacement = 0,
+        lowerDistance = 0,
         cLen = clusters.length,
         cCount = 0,
         cFeaturesCount = 0,
@@ -27,10 +29,13 @@ var getMinMaxDistances = function(strategy) {
                 if (ccFeature.cluster) {
                     var ccCenter = ccFeature.geometry.getBounds()
                                                              .getCenterLonLat();
+                    var currDistance = getDistance(x - ccCenter.lon,
+                                                   y - ccCenter.lat);
                     minClusterDistance = Math.min(
-                        minClusterDistance,
-                        getDistance(x - ccCenter.lon, y - ccCenter.lat)
-                    );
+                                              minClusterDistance, currDistance);
+                    if (currDistance < strategy.distance) {
+                        lowerDistance++;
+                    }
                 }
             }
         // Feature distances
@@ -54,6 +59,9 @@ var getMinMaxDistances = function(strategy) {
             }
             cCount++;
             var auxDisp = getDistance(x - xSum / ccLen, y - ySum / ccLen);
+            if (auxDisp > strategy.distance / 10) {
+                centerDisplacementOver10pc++;
+            }
             centerDisplacement += auxDisp;
             maxCenterDisplacement = Math.max(maxCenterDisplacement, auxDisp);
         } else {
@@ -69,6 +77,8 @@ var getMinMaxDistances = function(strategy) {
         clusterFaturesCount: cFeaturesCount,
         minClusterDistance: minClusterDistance,
         maxFeatureDistance: maxFeatureDistance,
+        lowerDistance: lowerDistance,
+        centerDisplacementOver10pc: centerDisplacementOver10pc,
         maxCenterDisplacement: maxCenterDisplacement,
         centerDisplacement: centerDisplacement / cCount,
         lenChk: lenChk
@@ -87,8 +97,8 @@ function createTimedStrategy(strategy, options) {
             if (!_logStarted) {
                 console.log('; zoom; time; clusters; clusteredFeatures;' +
                     ' features/cluster;' +
-                    ' minClusterDistance; maxFeatureDistance;' +
-                    ' maxCenterDisplacement; centerDisplacement;' +
+                    ' lowerDistance; minClusterDistance; maxFeatureDistance;' +
+                    ' centerDisplacementOver10pc; maxCenterDisplacement; centerDisplacement;' +
                     ' class; distance; threshold; features;');
                 _logStarted = true;
             }
@@ -100,18 +110,22 @@ function createTimedStrategy(strategy, options) {
                 '; ' + distances.clusterFaturesCount +
                 '; ' + (distances.clusterFaturesCount / distances.clusterCount)
                                                                    .toFixed(1) +
+                '; ' + distances.lowerDistance +
                 '; ' + distances.minClusterDistance.toFixed(3) +
                 '; ' + distances.maxFeatureDistance.toFixed(3) +
+                '; ' + distances.centerDisplacementOver10pc +
                 '; ' + distances.maxCenterDisplacement.toFixed(5) +
                 '; ' + distances.centerDisplacement.toFixed(5) +
                 '; ' + _strategy.CLASS_NAME
                                           .replace('OpenLayers.Strategy.', '') +
                 '; ' + _strategy.distance +
                 '; ' + _strategy.threshold +
-                '; ' + (_strategy.features.length === distances.lenChk ?
+                '; ' + ((_strategy.features.length === distances.lenChk &&
+                         _strategy.features.length === distances.clusterFaturesCount) ?
                         _strategy.features.length :
                         'WARNING: ' + _strategy.features.length + '!==' +
-                                                             distances.lenChk) +
+                                      distances.clusterFaturesCount + '!==' +
+                                      distances.lenChk) +
                 ';'
             );
         }

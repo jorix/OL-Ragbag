@@ -23,9 +23,9 @@ The components:
 
 ### Centered Clusters
 
-The OL Cluster algorithm is simple and efficient, but a cluster with two points shown centered on one of them, if there are two restaurants one in front of another no way to explain to the disadvantaged owner that the algorithm is efficient... see [DEV: cluster coord update proposition](http://osgeo-org.1560.n6.nabble.com/Cluster-strategy-cluster-coord-update-proposition-td3947012.html#a3947013)
+The OL Cluster algorithm is simple and efficient, but a cluster with two points shown centered on one of them, see [DEV: cluster coord update proposition](http://osgeo-org.1560.n6.nabble.com/Cluster-strategy-cluster-coord-update-proposition-td3947012.html#a3947013)
 
-The `CenteredCluster` proposal uses the OL algorithm as the main piece to group points in successive stages, few, but enough to improve outcome: clusters with few points are shown centered. Less cluster and are created with the most points, and is satisfied that all points are within the selected distance. There may be fewer clusters closer than the distance set, but the distance between two clusters is not less than `sqrt(3/4 * distance ^ 2)`
+The `CenteredCluster` proposal uses the OL algorithm as the main piece to group points and subsequently refine cluster. Enough to improve outcome: clusters with few points are shown centered. Less cluster with more points, and is satisfied that all points are within the selected distance. There may be fewer clusters closer than the distance set, but if presents, are few and the separation between them is not much smaller than the set distance.
 
 NOTE: This represents a considerable increase of the calculations to be performed, but has been done a implementation to optimize performance, so in the majority of cases `CenteredCluster` is as fast as than OL Cluster strategy.
 

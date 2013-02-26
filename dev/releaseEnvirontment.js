@@ -26,15 +26,16 @@
  * Valid options:
  * defaults - {Object} To determine the default values without any URL
  *      parameters: `release`, `lib`, `patch`.
- * patches - Array({String}) List of sources patch.
+ * patches - Array({String})|{Object} List of sources patch or object with
+ *      pairs: key + list patches as array.
  *
- * Example:
+ * Example 1:
  * (code)
  *  <title>My title</title>
  *  <script>
  *      var release = new releaseEnvironment({
- *          defaults: {patch: true}, 
- *          patches: ["myPatch-1.js", "myPatch-2.js"]
+ *          defaults: {patch: true},
+ *          patches: ['myPatch-1.js', 'myPatch-2.js']
  *      });
  *      release.writeScripts();
  *  </script>
@@ -42,9 +43,23 @@
  *  <h1 id="title">??</h1>
  *  <div id="environmentForm"></div>
  *  <script>
- *      release.writeSelectionForm("environmentForm", "title");
+ *      release.writeSelectionForm('environmentForm', 'title');
  *  </script>
+ * (end)
+ *
+ * Example 2:
  * (code)
+ *  ...
+ *  <script>
+ *      var release = new releaseEnvironment({
+ *          defaults: {patch: 'myPatch'},
+ *          patches: {yourPatch:['yourPatch'],
+ *                    myPatch: ['myPatch-1.js', 'myPatch-2.js']}
+ *      });
+ *      release.writeScripts();
+ *  </script>
+ *  ...
+ * (end)
  */
 function releaseEnvironment(options) {
     options = options || {};
@@ -55,13 +70,15 @@ function releaseEnvironment(options) {
         iSearch = window.location.search,
         // Default js values
         iRelease = defaults.release ? defaults.release : 'dev',
-        iPatch = !!defaults.patch,
-        iPatches = options.patches,
+        iPatch = defaults.patch,
         iLib = !!defaults.lib,
+        // Available patches
+        iPatches = options.patches,
         // Work
         iTitleText,
         iSufTitle,
         iUrlCanonical;
+
     // releases
     var releases = {
         'dev': 'http://www.openlayers.org/dev',
@@ -72,6 +89,20 @@ function releaseEnvironment(options) {
     };
 
     // Parse URL parameters
+    var _getUrl = function(release, lib, patch) {
+        var patchParam = '';
+        if (iPatches && patch) {
+            if (iPatches instanceof Array) {
+                patchParam = '&patch=y';
+            } else {
+                patchParam = '&patch=' + patch;
+            }
+        }
+        var url = iHref +
+            '?release=' + release + (lib ? '&lib=y' : '') + patchParam +
+            window.location.hash;
+        return url;
+    };
     if (iSearch) {
         var regRelease = /&*release=([\w\.]+)&?.*/i,
             regPatch = /&*patch=(\w+)&?.*/i,
@@ -79,24 +110,28 @@ function releaseEnvironment(options) {
             res;
         res = regRelease.exec(iSearch);
         iRelease = res ? res[1] : 'dev';
-        iPatch = !!regPatch.exec(iSearch);
+        iPatch = regPatch.exec(iSearch);
+        iPatch = iPatch ? iPatch[1] : false;
         iLib = !!regLib.exec(iSearch);
     }
+
+    // Mormalizing parameters.
+    if (iPatches) {
+        if (iPatches instanceof Array) {
+            iPatch = !!iPatch;
+        } else {
+            iPatch = iPatches[iPatch] ? iPatch : '';
+        }
+    }
     iRelease = releases[iRelease] ? iRelease : 'dev';
+
+    // Set title sufix and url canonical
     iSufTitle = iRelease +
                 (iLib ? '(lib)' : '') +
-                (iPatch ? ' + patch' : '');
-    iUrlCanonical =
-        [
-            [
-                iHref, [
-                    'release=', iRelease,
-                    (iLib ? '&lib=y' : ''),
-                    (iPatch ? '&patch=y' : '')
-                ].join('')
-            ].join('?'),
-            window.location.hash
-        ].join('');
+                (iPatch ?
+                    (iPatch === true ? ' + patch' : ' + patch=' + iPatch) :
+                    '');
+    iUrlCanonical = _getUrl(iRelease, iLib, iPatch);
 
     // set title
     var wrk;
@@ -128,9 +163,16 @@ function releaseEnvironment(options) {
         } else {
             scripts.push('<script src="' + urlOL + '/OpenLayers.js"></script>');
         }
+
         if (iPatch && iPatches) {
-            for (var i = 0, len = iPatches.length; i < len; i++) {
-                scripts.push('<script src="' + iPatches[i] + '"></script>');
+            var patchesArray = (iPatches instanceof Array) ?
+                                iPatches :
+                                iPatches[iPatch];
+            if (patchesArray) {
+                for (var i = 0, len = patchesArray.length; i < len; i++) {
+                    scripts.push('<script src="' + patchesArray[i] +
+                                                                 '"></script>');
+                }
             }
         }
         document.write(scripts.join('\n'));
@@ -157,46 +199,70 @@ function releaseEnvironment(options) {
             }
         }
 
-        // Create form
-        var form = document.createElement('form');
-        form.innerHTML = '<input type="submit" value =" Try ">&nbsp; Release: ';
-
-        // Declare form controls
-        var fSelect, fLib, fPatch;
-        // Select release
-        var fSelect = document.createElement('select');
-        for (var r in releases) {
-            wrk = document.createElement('option');
-            wrk.value = r;
-            wrk.innerHTML = r;
-            if (r === iRelease) {wrk.selected = 'selected';}
-            fSelect.appendChild(wrk);
-        }
-        form.appendChild(fSelect);
-        // chekcs
+        // Auxiliar functions
         var addChk = function(form, name, title, checked) {
             var element = document.createElement('input');
             element.type = 'checkbox';
-            element.id = 'form_' + name;
-            element.name = 'form_' + name;
             element.value = 'on'; //IE ?
-            form.appendChild(document.createTextNode(' \u00a0 '));
-            var wrk = document.createElement('label');
-            wrk.appendChild(element);
-            wrk.appendChild(document.createTextNode(title));
-            form.appendChild(wrk);
+            addField(form, name, title, true, element);
             // IE9 ussing compatibility mode requires set to checked after
             //     adding chk to the form :-(
             if (checked) {
                 element.checked = 'checked';
-                // element.defaultChecked = true; // for IE6: becomes checked
-                //     but then left uncheck.
             }
             return element;
-        }
+        };
+        var addSelect = function(form, name, title, nullable, list, selected) {
+            var wrk,
+                fSelect = document.createElement('select');
+            if (nullable) {
+                wrk = document.createElement('option');
+                wrk.value = '';
+                wrk.innerHTML = '(no)';
+                if (!selected) {wrk.selected = 'selected';}
+                fSelect.appendChild(wrk);
+            }
+            for (var r in list) {
+                wrk = document.createElement('option');
+                wrk.value = r;
+                wrk.innerHTML = r;
+                if (r === selected) {wrk.selected = 'selected';}
+                fSelect.appendChild(wrk);
+            }
+            addField(form, name, title, false, fSelect);
+            return fSelect;
+        };
+        var addField = function(form, name, title, post, element) {
+            form.appendChild(document.createTextNode(' \u00a0 '));
+            element.id = 'form_' + name;
+            element.name = 'form_' + name;
+            var wrk = document.createElement('label');
+            if (!post) {
+                wrk.appendChild(document.createTextNode(title + ' '));
+            }
+            wrk.appendChild(element);
+            if (post) {
+                wrk.appendChild(document.createTextNode(title));
+            }
+            form.appendChild(wrk);
+        };
+
+        // Create form
+        var form = document.createElement('form');
+        form.innerHTML = '<input type="submit" value =" Try ">';
+
+        // create form controls
+        var fReleases, fLib, fPatch;
+        fReleases = addSelect(
+                       form, 'release', 'Release: ', false, releases, iRelease);
         fLib = addChk(form, 'lib', 'use lib', iLib);
         if (iPatches) {
-            fPatch = addChk(form, 'patch', 'add patch', iPatch);
+            if (iPatches instanceof Array) {
+                fPatch = addChk(form, 'patch', 'add patch', iPatch);
+            } else {
+                fPatch = addSelect(
+                            form, 'patch', 'add patch', true, iPatches, iPatch);
+            }
         }
         // link
         wrk = document.createElement('a');
@@ -206,20 +272,19 @@ function releaseEnvironment(options) {
         form.appendChild(wrk);
 
         form.onsubmit = function() {
+            var patchParam = '';
+            if (iPatches) {
+                if (iPatches instanceof Array) {
+                    patchParam = fPatch.checked;
+                } else {
+                    patchParam = fPatch.value;
+                }
+            }
             window.location.assign(
-                [
-                    [
-                        iHref, [
-                            'release=', fSelect.value,
-                            (fLib.checked ? '&lib=y' : ''),
-                            (fPatch && fPatch.checked ? '&patch=y' : '')
-                        ].join('')
-                    ].join('?'),
-                    window.location.hash
-                ].join('')
-            );
+                            _getUrl(fReleases.value, fLib.checked, patchParam));
             return false;
         };
+
         // Add form to div
         var formDiv = document.getElementById(formDivId);
         formDiv.appendChild(form);

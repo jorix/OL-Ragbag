@@ -15,21 +15,29 @@ if (browserType) {document.write("<div class=" + browserType + ">");if (browserV
 
 <div class="CGroup"><div class=CTopic><h3 class=CTitle><a name="releaseEnvironment.Constructor"></a>Constructor</h3></div></div>
 
-<div class="CConstructor"><div class=CTopic><h3 class=CTitle><a name="releaseEnvironment.releaseEnvironment"></a>releaseEnvironment</h3><div class=CBody><p>Loads selected OpenLayers release as instructed in URL parameters.</p><h4 class=CHeading>URL parameters</h4><ul><li>release: &ldquo;dev&rdquo;, &ldquo;2.12&rdquo; ...&nbsp; &ldquo;2.9&rdquo;</li><li>lib: Use lib for debug (true if `lib` parameter exists in the URL)</li><li>patch: Use aditional sources on `patches` option (true if `patch` parameter exists in the URL)</li></ul><h4 class=CHeading>Parameters</h4><table border=0 cellspacing=0 cellpadding=0 class=CDescriptionList><tr><td class=CDLEntry>options</td><td class=CDLDescription>{Object}</td></tr></table><h4 class=CHeading>Valid options</h4><table border=0 cellspacing=0 cellpadding=0 class=CDescriptionList><tr><td class=CDLEntry>defaults</td><td class=CDLDescription>{Object} To determine the default values without any URL parameters: `release`, `lib`, `patch`.</td></tr><tr><td class=CDLEntry>patches</td><td class=CDLDescription>Array({String}) List of sources patch.</td></tr></table><h4 class=CHeading>Example</h4><blockquote><pre class="prettyprint"> &lt;title&gt;My title&lt;/title&gt;
- &lt;script&gt;
-     var release = new releaseEnvironment({
-         defaults: {patch: true},
-         patches: [&quot;myPatch-1.js&quot;, &quot;myPatch-2.js&quot;]
-     });
-     release.writeScripts();
- &lt;/script&gt;
- ...
- &lt;h1 id=&quot;title&quot;&gt;??&lt;/h1&gt;
- &lt;div id=&quot;environmentForm&quot;&gt;&lt;/div&gt;
- &lt;script&gt;
-     release.writeSelectionForm(&quot;environmentForm&quot;, &quot;title&quot;);
- &lt;/script&gt;
-(code)</pre></blockquote></div></div></div>
+<div class="CConstructor"><div class=CTopic><h3 class=CTitle><a name="releaseEnvironment.releaseEnvironment"></a>releaseEnvironment</h3><div class=CBody><p>Loads selected OpenLayers release as instructed in URL parameters.</p><h4 class=CHeading>URL parameters</h4><ul><li>release: &ldquo;dev&rdquo;, &ldquo;2.12&rdquo; ...&nbsp; &ldquo;2.9&rdquo;</li><li>lib: Use lib for debug (true if `lib` parameter exists in the URL)</li><li>patch: Use aditional sources on `patches` option (true if `patch` parameter exists in the URL)</li></ul><h4 class=CHeading>Parameters</h4><table border=0 cellspacing=0 cellpadding=0 class=CDescriptionList><tr><td class=CDLEntry>options</td><td class=CDLDescription>{Object}</td></tr></table><h4 class=CHeading>Valid options</h4><table border=0 cellspacing=0 cellpadding=0 class=CDescriptionList><tr><td class=CDLEntry>defaults</td><td class=CDLDescription>{Object} To determine the default values without any URL parameters: `release`, `lib`, `patch`.</td></tr><tr><td class=CDLEntry>patches</td><td class=CDLDescription>Array({String})|{Object} List of sources patch or object with pairs: key + list patches as array.</td></tr></table><h4 class=CHeading>Example 1</h4><blockquote><pre class="prettyprint">&lt;title&gt;My title&lt;/title&gt;
+&lt;script&gt;
+    var release = new releaseEnvironment({
+        defaults: {patch: true},
+        patches: ['myPatch-1.js', 'myPatch-2.js']
+    });
+    release.writeScripts();
+&lt;/script&gt;
+...
+&lt;h1 id=&quot;title&quot;&gt;??&lt;/h1&gt;
+&lt;div id=&quot;environmentForm&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    release.writeSelectionForm('environmentForm', 'title');
+&lt;/script&gt;</pre></blockquote><h4 class=CHeading>Example 2</h4><blockquote><pre class="prettyprint">...
+&lt;script&gt;
+    var release = new releaseEnvironment({
+        defaults: {patch: 'myPatch'},
+        patches: {yourPatch:['yourPatch'],
+                  myPatch: ['myPatch-1.js', 'myPatch-2.js']}
+    });
+    release.writeScripts();
+&lt;/script&gt;
+...</pre></blockquote></div></div></div>
 
 <div class="CGroup"><div class=CTopic><h3 class=CTitle><a name="releaseEnvironment.Functions"></a>Functions</h3></div></div>
 

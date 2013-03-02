@@ -16,8 +16,12 @@
     <script src="http://jorix.github.com/OL-Ragbag/dev/releaseEnvirontment.js"></script>
     <script>
         var release = new releaseEnvironment({
-            defaults: {patch: true}, 
-            patches: ["../lib/Ragbag/Control/ModifyFeature-patch.js"]
+            defaults: {patch: 'all'},
+            patches: {all:      ["../lib/Ragbag/Control/ModifyFeature-patch.js",
+                                 "../lib/Ragbag/Handler/Path-patch.js"],
+                      modify:   ["../lib/Ragbag/Control/ModifyFeature-patch.js"],
+                      draw:     ["../lib/Ragbag/Handler/Path-patch.js"]
+            }
         });
         release.writeScripts();
     </script>

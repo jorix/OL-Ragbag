@@ -9,10 +9,11 @@ This components can also be used in a custom compressed [build](http://docs.open
 The components:
 ==============
 
-## Improve ModifyFeature control using keys "del" and "esc"
+## Improve the drawing tools to add more behaviors associated with the *del-key* and *esc-key*
 
-  * Extends the ModifyFeature control behavior to allow delete the feature that have been selected for modification (by del-key).
-  * Cancel vertex drag pressing esc-key.
+  * Extends `ModifyFeature` control behavior to allow delete the feature that have been selected for modification by *del-key*.
+  * Cancel vertex drag pressing *esc-key* using `ModifyFeature`.
+  * Extends `Path` & `Polygon` handlers to remove the last added point or delete the drawing if no more points to remove by *esc-key*.
   * See example [modify-feature.html](http://jorix.github.com/OL-Ragbag/examples/modify-feature.html)
 
 ## Extends KML format to load StyleMap with *"normal"* and *"highlight"*

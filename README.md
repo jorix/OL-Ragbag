@@ -9,7 +9,7 @@ This components can also be used in a custom compressed [build](http://docs.open
 The components:
 ==============
 
-## Improve the drawing tools to add more behaviors associated with the *del-key* and *esc-key*
+## Improve drawing tools to add behaviors related to *del-key* and *esc-key*
 
   * Extends `ModifyFeature` control behavior to allow delete the feature that have been selected for modification by *del-key*.
   * Cancel vertex drag pressing *esc-key* using `ModifyFeature`.

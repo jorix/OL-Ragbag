@@ -43,6 +43,8 @@ NOTE: This represents a considerable increase of the calculations to be performe
     * *zoomSettings*: allows different settings depending on the zoom ranges.
   * Allows add and remove individual features dynamically, see [strategy-centered-cluster-add-remove.html](http://jorix.github.com/OL-Ragbag/examples/strategy-centered-cluster-add-remove.html)
 
+NOTE: This code includes a patch for [`getDataExtent`](http://jorix.github.com/OL-Ragbag/doc/Ragbag/api/files/Ragbag/Strategy/CenteredCluster-js.html#OpenLayers.Layer.Vector.getDataExtent) of `OpenLayers.Layer.Vector`.
+
 - - -
 
 Compatibility with OpenLayers releases:

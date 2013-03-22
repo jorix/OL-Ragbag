@@ -11,9 +11,9 @@ The components:
 
 ## Improve drawing tools to add behaviors related to *del-key* and *esc-key*
 
-  * Extends `ModifyFeature` control behavior to allow delete the feature that have been selected for modification by *del-key*.
+  * Extends `ModifyFeature` control behavior to allow delete by *del-key* the feature that have been selected for modification.
   * Cancel vertex drag pressing *esc-key* using `ModifyFeature`.
-  * Extends `Path` & `Polygon` handlers to remove the last added point or delete the drawing if no more points to remove by *esc-key*.
+  * Extends `Path` & `Polygon` handlers to remove the last added point by *esc-key* (or delete the drawing if no more points to remove)
   * See example [modify-feature.html](http://jorix.github.com/OL-Ragbag/examples/modify-feature.html)
 
 ## Extends KML format to load StyleMap with *"normal"* and *"highlight"*

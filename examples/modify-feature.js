@@ -16,7 +16,6 @@ OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '3';
 var reportEvent;
 if (console && console.log) {
     reportEvent = function(event) {
-    return;
         console.log(event.type,
                     event.feature ? event.feature.id : event.components);
     };

@@ -57,7 +57,7 @@ Deploy:
 -------
 To use any component need only add it after the declaration of `<script src="... /OpenLayers.js"></script>`.
 
-This components can also be used in a custom compressed *.cfg file since in the code has been declared the appropriate clauses of `@requires` (see OL manual [minimizing-build-size](http://docs.openlayers.org/library/deploying.html#minimizing-build-size)
+This components could be used in a custom `*.cfg` file to compress  javaScript since in the code has been declared the appropriate clauses of `@requires` (see OL manual [minimizing-build-size](http://docs.openlayers.org/library/deploying.html#minimizing-build-size))
 
 Compatibility with OpenLayers releases:
 --------------------------------------

@@ -3,18 +3,24 @@ A ragbag for use with OpenLayers
 
 This mixed bag containing several components, which are not related to each other. 
 
-To use any component need only add it after the declaration of `<script src="... /OpenLayers.js"></script>`.
-This components can also be used in a custom compressed [build](http://docs.openlayers.org/library/deploying.html#minimizing-build-size) so in the code has been declared the clauses of `@requires`.
-
 The components:
 ==============
 
-## Improve drawing tools to add behaviors related to *del-key* and *esc-key*
+## Improve drawing and editing tools adding behaviors
 
-  * Extends `ModifyFeature` control behavior to allow delete by *del-key* the feature that have been selected for modification.
-  * Cancel vertex drag pressing *esc-key* using `ModifyFeature`.
-  * Extends `Path` & `Polygon` handlers to remove the last added point by *esc-key* (or delete the drawing if no more points to remove)
-  * See example [modify-feature.html](http://jorix.github.com/OL-Ragbag/examples/modify-feature.html)
+  * Extends *Path* & *Polygon* handlers:
+    * Provided by [Path-patch.js](lib/Ragbag/Handler/Path-patch.js)
+    * Remove last added point by *esc-key* (or delete it if no more points to remove)
+  * Extends *ModifyFeature* control behaviors:
+    * Provided by [ModifyFeature-tools.js](lib/Ragbag/Control/ModifyFeature-tools.js)
+    * Allow delete a feature that have been selected for modification by a button.
+    * Cancel a drag pressing *esc-key*.
+    * Separate representation for each tool (rotate, resize ...)
+    * Use icons to identify the tools.
+    * Configurable styles are used to show the tools (independent of the layer *styleMap*)
+    * Also uses Configurable styles to show vertices (could be independents of the layer *styleMap*)
+
+See example [modify-feature.html](http://jorix.github.com/OL-Ragbag/examples/modify-feature.html)
 
 ## Extends KML format to load StyleMap with *"normal"* and *"highlight"*
 
@@ -46,6 +52,12 @@ NOTE: This represents a considerable increase of the calculations to be performe
 NOTE: This code includes a patch for [`getDataExtent`](http://jorix.github.com/OL-Ragbag/doc/Ragbag/api/files/Ragbag/Strategy/CenteredCluster-js.html#OpenLayers.Layer.Vector.getDataExtent) of `OpenLayers.Layer.Vector`.
 
 - - -
+
+Deploy:
+-------
+To use any component need only add it after the declaration of `<script src="... /OpenLayers.js"></script>`.
+
+This components can also be used in a custom compressed *.cfg file since in the code has been declared the appropriate clauses of `@requires` (see OL manual [minimizing-build-size](http://docs.openlayers.org/library/deploying.html#minimizing-build-size)
 
 Compatibility with OpenLayers releases:
 --------------------------------------

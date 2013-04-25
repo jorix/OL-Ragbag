@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="lang" content="en" />
-    <meta name="author" content="Jorix" />
-    <meta name="description" content="Usage example of ModifyFeature control for editing and deleting vector features." />
-    <meta name="keywords" content="OpenLayers, vertices, draw, drawing, modify, delete" />
+    <meta name="lang" content="en">
+    <meta name="author" content="Jorix">
+    <meta name="description" content="Usage example of ModifyFeature control for editing and deleting vector features.">
+    <meta name="keywords" content="OpenLayers, vertices, draw, drawing, modify, delete">
     <link rel="stylesheet" href="http://jorix.github.com/OL-Ragbag/examples/github-pages/forkme_banner.css" type="text/css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -34,50 +34,52 @@
     <div id="controls">
         <ul id="controlToggle">
             <li>
-                <input type="radio" name="type" value="none" id="noneToggle" onclick="toggleControl(this);" checked="checked" />
+                <input type="radio" name="type" value="none" id="noneToggle" onclick="toggleControl(this);" checked="checked">
                 <label for="noneToggle">none</label>
             </li>
             <li>
-                <input type="radio" name="type" value="point" id="pointToggle" onclick="toggleControl(this);" />
+                <input type="radio" name="type" value="point" id="pointToggle" onclick="toggleControl(this);">
                 <label for="pointToggle">draw point</label>
             </li>
             <li>
-                <input type="radio" name="type" value="line" id="lineToggle" onclick="toggleControl(this);" />
+                <input type="radio" name="type" value="line" id="lineToggle" onclick="toggleControl(this);">
                 <label for="lineToggle">draw line</label>
             </li>
             <li>
-                <input type="radio" name="type" value="polygon" id="polygonToggle" onclick="toggleControl(this);" />
+                <input type="radio" name="type" value="polygon" id="polygonToggle" onclick="toggleControl(this);">
                 <label for="polygonToggle">draw polygon</label>
             </li>
 
             <li>
-                <input type="radio" name="type" value="modify" id="modifyToggle" onclick="toggleControl(this);" />
+                <input type="radio" name="type" value="modify" id="modifyToggle" onclick="toggleControl(this);">
                 <label for="modifyToggle">modify feature</label>
                 <ul>
                     <li>
-                        <input type="checkbox" name="vertices" id="vertices" onchange="updateModifyControl()" checked="checked" />
+                        <input type="checkbox" name="vertices" id="vertices" onchange="updateModifyControl()" checked="checked">
                         <label for="createVertices">modify vertices</label> (
-                        <input type="checkbox" name="createVertices" id="createVertices" onchange="updateModifyControl()" checked="checked" />
+                        <input type="checkbox" name="createVertices" id="createVertices" onchange="updateModifyControl()" checked="checked">
                         <label for="createVertices">allow virtual vertices</label>)
                     </li>
                     <li>
-                        <input type="checkbox" name="rotate" id="rotate" onchange="updateModifyControl()" />
+                        <input type="checkbox" name="rotate" id="rotate" onchange="updateModifyControl()" checked="checked">
                         <label for="rotate">allow rotation</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="resize" id="resize" onchange="updateModifyControl()" />
+                        <input type="checkbox" name="resize" id="resize" onchange="updateModifyControl()" checked="checked">
                         <label for="resize">allow resizing</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="deform" id="deform" onchange="updateModifyControl()" />
-                        <label for="keepAspectRatio">allow deform</label>
+                        <input type="checkbox" name="deform" id="deform" onchange="updateModifyControl()" checked="checked">
+                        <label for="keepAspectRatio">allow deform</label> (
+                        <input type="checkbox" name="reshape" id="reshape" onchange="updateModifyControl()">
+                        <label for="reshape">use OL compatible mode <code>RESHAPE</code> instead of <code>VERTICES</code> or <code>DEFORM</code></label>)
                     </li>
                     <li>
-                        <input type="checkbox" name="delete" id="delete" onchange="updateModifyControl()" />
-                        <label for="drag">allow delete</label>
+                        <input type="checkbox" name="delete" id="delete" onchange="updateModifyControl()" checked="checked">
+                        <label for="delete">allow delete</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="drag" id="drag" onchange="updateModifyControl()" />
+                        <input type="checkbox" name="drag" id="drag" onchange="updateModifyControl()" checked="checked">
                         <label for="drag">allow dragging</label>
                     </li>
                 </ul>
@@ -86,10 +88,10 @@
     </div>
     <div id="docs">
         <p>
-            View the <a href="modify-feature-tools.js" target="_blank">modify-feature-tools.js</a> 
+            View the <a href="modify-feature.js" target="_blank">modify-feature.js</a> 
             source to see how this is done.
         </p>
     </div>
-    <script src="modify-feature-tools.js"></script>
+    <script src="modify-feature.js"></script>
   </body>
 </html>

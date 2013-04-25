@@ -72,6 +72,7 @@ var controls = {
 for (var key in controls) {
     map.addControl(controls[key]);
 }
+updateModifyControl();
 
 // Functions called from the form fields to choose the desired control to test.
 // ----------------------------------------------------------------------------
@@ -96,6 +97,7 @@ function updateModifyControl() {
     var drag = document.getElementById('drag').checked;
     var deform = document.getElementById('deform').checked;
     var delete_ = document.getElementById('delete').checked;
+    var reshape = document.getElementById('reshape').checked;
 
     controls.modify.createVertices =
                         document.getElementById('createVertices').checked;
@@ -118,6 +120,9 @@ function updateModifyControl() {
     }
     if (delete_) {
         controls.modify.mode |= OpenLayers.Control.ModifyFeature.DELETE;
+    }
+    if (reshape) {
+        controls.modify.mode |= OpenLayers.Control.ModifyFeature.RESHAPE;
     }
 }
 

@@ -1,5 +1,5 @@
-/* Copyright 2013 Xavier Mamano, http://github.com/jorix/OL-Ragbag
- * Published under MIT license. All rights reserved. */
+/* Copyright 2012-2013 by Xavier Mamano, http://github.com/jorix/OL-Ragbag
+ * Published under MIT license. */
 
 /**
  * Class: releaseEnvironment

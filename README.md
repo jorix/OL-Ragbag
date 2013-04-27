@@ -20,11 +20,11 @@ The components:
     * Configurable styles are used to show the tools (independent of the layer *styleMap*)
     * Also uses Configurable styles to show vertices (could be independents of the layer *styleMap*)
 
-See example [modify-feature.html](http://jorix.github.com/OL-Ragbag/examples/modify-feature.html)
+See example [modify-feature.html](http://jorix.github.io/OL-Ragbag/examples/modify-feature.html)
 
 ## Extends KML format to load StyleMap with *"normal"* and *"highlight"*
 
-  * See example [sundials.html](http://jorix.github.com/OL-Ragbag/examples/sundials.html)
+  * See example [sundials.html](http://jorix.github.io/OL-Ragbag/examples/sundials.html)
 
 ## *CenteredCluster* strategy
 
@@ -36,20 +36,20 @@ The `CenteredCluster` proposal uses the OL algorithm as the main piece to group 
 
 NOTE: This represents a considerable increase of the calculations to be performed, but has been done a implementation to optimize performance, so in the majority of cases `CenteredCluster` is as fast as than OL Cluster strategy.
 
- * See example [strategy-centered-cluster-log-timed.html](http://jorix.github.com/OL-Ragbag/examples/strategy-centered-cluster-log-timed.html) (comparison between `CenteredCluster` and OL Cluster strategies)
+ * See example [strategy-centered-cluster-log-timed.html](http://jorix.github.io/OL-Ragbag/examples/strategy-centered-cluster-log-timed.html) (comparison between `CenteredCluster` and OL Cluster strategies)
  
 ### Other improvements
 
   * Methods `activate` and `deactivate` makes cluster and uncluster the features.
-  * Use adaptive settings depending on the level of zoom (allowed settings: `enabled`, `distance`, `threshold` and `centered`), see [sundials-cluster.html](http://jorix.github.com/OL-Ragbag/examples/sundials-cluster.html)
+  * Use adaptive settings depending on the level of zoom (allowed settings: `enabled`, `distance`, `threshold` and `centered`), see [sundials-cluster.html](http://jorix.github.io/OL-Ragbag/examples/sundials-cluster.html)
   * New properties in respect of OL Cluster:
     * *centered*: clusters are centered on the points they represent (default value is true)
-    * *candidateMatches*: optional function that replaces the OL `shouldCluster` (see [strategy-cluster-extended.html](http://jorix.github.com/OL-Ragbag/examples/strategy-cluster-extended.html))
+    * *candidateMatches*: optional function that replaces the OL `shouldCluster` (see [strategy-cluster-extended.html](http://jorix.github.io/OL-Ragbag/examples/strategy-cluster-extended.html))
     * *enabled*: if false the features are shown unclustered.
     * *zoomSettings*: allows different settings depending on the zoom ranges.
-  * Allows add and remove individual features dynamically, see [strategy-centered-cluster-add-remove.html](http://jorix.github.com/OL-Ragbag/examples/strategy-centered-cluster-add-remove.html)
+  * Allows add and remove individual features dynamically, see [strategy-centered-cluster-add-remove.html](http://jorix.github.io/OL-Ragbag/examples/strategy-centered-cluster-add-remove.html)
 
-NOTE: This code includes a patch for [`getDataExtent`](http://jorix.github.com/OL-Ragbag/doc/Ragbag/api/files/Ragbag/Strategy/CenteredCluster-js.html#OpenLayers.Layer.Vector.getDataExtent) of `OpenLayers.Layer.Vector`.
+NOTE: This code includes a patch for [`getDataExtent`](http://jorix.github.io/OL-Ragbag/doc/Ragbag/api/files/Ragbag/Strategy/CenteredCluster-js.html#OpenLayers.Layer.Vector.getDataExtent) of `OpenLayers.Layer.Vector`.
 
 - - -
 
@@ -60,8 +60,8 @@ To use any component need only add it after the declaration of `<script src="...
 This components could be used in a custom `*.cfg` file to compress  javaScript since in the code has been declared the appropriate clauses of `@requires` (see OL manual [minimizing-build-size](http://docs.openlayers.org/library/deploying.html#minimizing-build-size))
 
 See also **OL-ragbag API documentation**:
- * [API for users](http://jorix.github.com/OL-ragbag/doc/Ragbag/api)
- * For developers [all elements](http://jorix.github.com/OL-ragbag/doc/Ragbag/all)
+ * [API for users](http://jorix.github.io/OL-Ragbag/doc/Ragbag/api)
+ * For developers [all elements](http://jorix.github.io/OL-Ragbag/doc/Ragbag/all)
 
 Compatibility with OpenLayers releases:
 --------------------------------------

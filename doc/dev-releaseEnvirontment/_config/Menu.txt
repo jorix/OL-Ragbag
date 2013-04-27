@@ -27,7 +27,7 @@ SubTitle: Loads OpenLayers releases and can choose add patches or not.
 # These are indexes you deleted, so Natural Docs will not add them again
 # unless you remove them from this line.
 
-Don't Index: General, Functions, Constructor, Files, Classes
+Don't Index: General, Constructor, Functions, Files, Classes
 
 
 # --------------------------------------------------------------------------

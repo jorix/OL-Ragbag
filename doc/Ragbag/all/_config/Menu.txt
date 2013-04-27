@@ -1,7 +1,7 @@
 Format: 1.52
 
 
-Title: The ragbag
+Title: OL-ragbag
 SubTitle: Compatible with OpenLayers 2.11, 2.12 &amp; dev
 
 # You can add a footer to your documentation like this:
@@ -27,7 +27,7 @@ SubTitle: Compatible with OpenLayers 2.11, 2.12 &amp; dev
 # These are indexes you deleted, so Natural Docs will not add them again
 # unless you remove them from this line.
 
-Don't Index: General, Constructor, Functions, Files, Classes, Properties
+Don't Index: General, Functions, Constructor, Files, Classes, Constants, Properties
 
 
 # --------------------------------------------------------------------------
@@ -50,7 +50,7 @@ Don't Index: General, Constructor, Functions, Files, Classes, Properties
 # --------------------------------------------------------------------------
 
 
-File: Control.ModifyFeature  (Ragbag\Control\ModifyFeature-patch.js)
+File: Control.ModifyFeature  (Ragbag\Control\ModifyFeature-tools.js)
 File: Format.KML  (Ragbag\Format\KML-patch.js)
 File: Handler.Path  (Ragbag\Handler\Path-patch.js)
 File: Strategy.CenteredCluster  (Ragbag\Strategy\CenteredCluster.js)

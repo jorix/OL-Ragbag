@@ -59,6 +59,10 @@ To use any component need only add it after the declaration of `<script src="...
 
 This components could be used in a custom `*.cfg` file to compress  javaScript since in the code has been declared the appropriate clauses of `@requires` (see OL manual [minimizing-build-size](http://docs.openlayers.org/library/deploying.html#minimizing-build-size))
 
+See also **OL-ragbag API documentation**:
+ * [API for users](http://jorix.github.com/OL-ragbag/doc/Ragbag/api)
+ * For developers [all elements](http://jorix.github.com/OL-ragbag/doc/Ragbag/all)
+
 Compatibility with OpenLayers releases:
 --------------------------------------
 The components (if not stated otherwise in component description) works correctly with release 2.11 2.12 and the OL development version.

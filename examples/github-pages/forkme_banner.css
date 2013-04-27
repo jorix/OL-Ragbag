@@ -1,17 +1,35 @@
 #forkme_banner {
     display: block;
     position: absolute;
-    top:0; right: 18px;
+    top:4px; right: 24px;
     z-index: 10;
-    padding: 5px 45px 5px 5px;
+    padding: 5px 5px 5px 36px;
     color: #fff;
-    background: url('http://github.com/themes/slate/images/blacktocat.png') #0090ff no-repeat 95% 50%;
-    box-shadow: 0 0 10px rgba(0,0,0,.5);
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
+    background: url('http://github.com/themes/slate/images/blacktocat.png') #0090ff no-repeat 3px 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 16px;
     text-decoration: none;
     font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
     font-size: 16px;
     line-height: 24px;
     font-weight: bold;
+}
+a#forkme_banner:hover,
+a#forkme_banner:focus {
+    background: url('http://github.com/themes/slate/images/blacktocat.png') #000000 no-repeat 3px 50%;
+}
+
+body {
+    margin-top:0 !important;
+}
+#title {
+    background-color: #ddd;
+    color: #025;
+    border-radius: 16px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0; 
+    min-height: 30px;
+    border-width:0;
+    padding: 12px 150px 0 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
 }

@@ -249,26 +249,26 @@ function releaseEnvironment(options) {
 
         // Create form
         var form = document.createElement('form');
-        form.innerHTML = '<input type="submit" value =" Try ">';
+        form.innerHTML = '<input type="submit" value =" Switch to: ">';
 
         // create form controls
         var fReleases, fLib, fPatch;
-        fReleases = addSelect(
-                       form, 'release', 'Release: ', false, releases, iRelease);
-        fLib = addChk(form, 'lib', 'use lib', iLib);
         if (iPatches) {
             if (iPatches instanceof Array) {
-                fPatch = addChk(form, 'patch', 'add patch', iPatch);
+                fPatch = addChk(form, 'patch', 'patch', iPatch);
             } else {
                 fPatch = addSelect(
-                            form, 'patch', 'add patch', true, iPatches, iPatch);
+                            form, 'patch', 'patch', true, iPatches, iPatch);
             }
         }
+        fReleases = addSelect(
+                       form, 'release', 'release ', false, releases, iRelease);
+        fLib = addChk(form, 'lib', 'OL lib debug', iLib);
         // link
         wrk = document.createElement('a');
         wrk.href = iUrlCanonical;
         wrk.innerHTML = iSufTitle;
-        form.appendChild(document.createTextNode(' \u00a0 Link: '));
+        form.appendChild(document.createTextNode(' \u00a0 \u00bb '));
         form.appendChild(wrk);
 
         form.onsubmit = function() {

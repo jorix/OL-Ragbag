@@ -92,8 +92,8 @@ function createTimedStrategy(strategy, options) {
         var initialTime = new Date();
         _cluster.apply(_strategy, arguments);
         var finalTime = new Date();
-        if (_strategy.features && _strategy.features.length && console &&
-                                                                  console.log) {
+        if (_strategy.features && _strategy.features.length &&
+                                         window.console && window.console.log) {
             if (!_logStarted) {
                 console.log('; zoom; time; clusters; clusteredFeatures;' +
                     ' features/cluster;' +

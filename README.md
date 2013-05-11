@@ -19,6 +19,7 @@ The components:
     * Use icons to identify the tools.
     * Configurable styles are used to show the tools (independent of the layer *styleMap*)
     * Also uses Configurable styles to show vertices (could be independents of the layer *styleMap*)
+    * Allows add custom tools (eg drag attributes as a angle attribute of a point)
 
 See example [modify-feature.html](http://jorix.github.io/OL-Ragbag/examples/modify-feature.html)
 

@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="lang" content="en">
     <meta name="author" content="Jorix">
-    <meta name="description" content="Usage example of ModifyFeature control for editing and deleting vector features.">
-    <meta name="keywords" content="OpenLayers, vertices, draw, drawing, modify, delete">
+    <meta name="description" content="Usage example of ModifyFeature control for editing deleting and modify attributes of vector features.">
+    <meta name="keywords" content="OpenLayers, vertices, draw, drawing, modify, delete, attributes">
     <link rel="stylesheet" href="http://jorix.github.com/OL-Ragbag/examples/github-pages/forkme_banner.css" type="text/css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -22,14 +22,20 @@
     </style>
 
     <script src="http://www.openlayers.org/dev/OpenLayers.js"></script>
+    <!-- To improve editing by separate and add delete and custom tools and allows undo by <esc-key> -->
     <script src="../lib/Ragbag/Control/ModifyFeature-tools.js"></script>
+    <!-- To improve drawing tools to allow undo by <esc-key> -->
+    <script src="../lib/Ragbag/Handler/Path-patch.js"></script>
 
   </head>
   <body>
-    <h1 id="title">Example of OpenLayers to Modify and Delete features</h1>
+    <h1 id="title">Example of OpenLayers to edit delete and modify attributes of vector features.</h1>
     <a id="forkme_banner" href="https://github.com/jorix/OL-Ragbag#improve-drawing-and-editing-tools-adding-behaviors">View on GitHub</a>
     <div id="tags">vertices, draw, drawing, modify, delete</div>
-    <div id="shortdesc">Example of ModifyFeature control for editing and deleting vector features.</div>
+    <div id="shortdesc">
+        <p>Is obtained an improvement of usability by separating the tools and allowing a different icon for each tool, and empowers to use &lt;esc-key&gt; to cancel the current drag and remove last vertex added.</p>
+        <p>Also allows a delete tool and add custom tools (eg to modify attributes: see points on this example, or close a line as a ring: see lines)</p>
+    </div>
     <div id="map" class="smallmap"></div>
     <div id="controls">
         <ul id="controlToggle">

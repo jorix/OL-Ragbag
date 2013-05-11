@@ -7,7 +7,15 @@ OpenLayers.Layer.Vector.prototype.renderers = renderer ?
                                     [renderer] :
                                     OpenLayers.Layer.Vector.prototype.renderers;
 
-OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '3';
+OpenLayers.Util.extend(OpenLayers.Feature.Vector.style['default'], {
+    strokeWidth: 3,
+    graphicName: 'triangle',
+    pointRadius: '${radius}',
+    rotation: '${angle}'
+});
+OpenLayers.Util.extend(OpenLayers.Feature.Vector.style['select'], {
+    pointRadius: '${radius}'
+});
 
 // Create Objects
 // --------------
@@ -27,10 +35,7 @@ if (window.console && window.console.log) {
 var vectorLayer = new OpenLayers.Layer.Vector('Vector Layer');
 vectorLayer.events.on({
     'beforefeaturemodified': reportEvent,
-    'featuremodified': function(e) {
-        e.feature.state = OpenLayers.State.UPDATE;
-        reportEvent(e);
-    },
+    'featuremodified': reportEvent,
     'afterfeaturemodified': reportEvent,
     'beforefeatureremoved': reportEvent,
     'featureremoved': reportEvent,
@@ -38,6 +43,12 @@ vectorLayer.events.on({
     'sketchmodified': reportEvent,
     'sketchstarted': reportEvent,
     'sketchcomplete': reportEvent
+});
+// to ensure that the points have radius
+vectorLayer.events.on({
+    'beforefeatureadded': function(e) {
+        e.feature.attributes.radius = 6;
+    }
 });
 
 // Create and show the map
@@ -64,7 +75,44 @@ var controls = {
         eventListeners: {
             'beforefeaturedeleted': reportEvent,
             'featuredeleted': reportEvent
-        }
+        },
+        tools: [ // custom tools
+        { 
+            // to rotate the "angle" attribute of a ponit by steps of 15 degrees
+            geometryTypes: ['OpenLayers.Geometry.Point'],
+            dragAction: function(feature, initialAtt, escale, rotation) {
+                var angle = ((initialAtt.angle || 0) - rotation) % 360;
+                // force steps of 15 degrres
+                angle = Math.floor(angle / 15) * 15;
+                feature.attributes.angle = angle;
+            },
+            style: OpenLayers.Control.ModifyFeature_styles.rotate
+        }, {
+            // to resize the pointRadius.
+            geometryTypes: ['OpenLayers.Geometry.Point'],
+            dragAction: function(feature, initialAtt, escale, rotation) {
+                var radius = (initialAtt.radius || 6) * escale;
+                feature.attributes.radius = Math.max(6, radius);
+            },
+            style: OpenLayers.Control.ModifyFeature_styles.resize
+        }, {
+            // to close a lineString as a ring
+            geometryTypes: ['OpenLayers.Geometry.LineString'],
+            pressingAction: function(feature) {
+                var geometry = feature.geometry;
+                geometry.addComponent(geometry.components[0].clone());
+            },
+            style: {
+                label:'ring',
+                title: 'press to close as a ring',
+                cursor: "pointer",
+                fontSize: '8px',
+                fontColor: '#222',
+                pointRadius: 10,
+                fillColor: '#cccccc',
+                strokeColor: '#444444'
+            }
+        }]
     })
 };
 // add this controls to the map

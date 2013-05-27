@@ -66,6 +66,8 @@ map.setCenter(new OpenLayers.LonLat(0, 0), 3);
 var controls = {
     point: new OpenLayers.Control.DrawFeature(vectorLayer,
                 OpenLayers.Handler.Point),
+    multiPoint: new OpenLayers.Control.DrawFeature(vectorLayer,
+                OpenLayers.Handler.Point, {handlerOptions: {multi: true}}),
     line: new OpenLayers.Control.DrawFeature(vectorLayer,
                 OpenLayers.Handler.Path),
     polygon: new OpenLayers.Control.DrawFeature(vectorLayer,
@@ -79,7 +81,8 @@ var controls = {
         tools: [ // custom tools
         { 
             // to rotate the "angle" attribute of a ponit by steps of 15 degrees
-            geometryTypes: ['OpenLayers.Geometry.Point'],
+            geometryTypes: ['OpenLayers.Geometry.Point',
+                            'OpenLayers.Geometry.MultiPoint'],
             dragAction: function(feature, initialAtt, escale, rotation) {
                 var angle = ((initialAtt.angle || 0) - rotation) % 360;
                 // force steps of 15 degrres
@@ -89,7 +92,8 @@ var controls = {
             style: OpenLayers.Control.ModifyFeature_styles.rotate
         }, {
             // to resize the pointRadius.
-            geometryTypes: ['OpenLayers.Geometry.Point'],
+            geometryTypes: ['OpenLayers.Geometry.Point',
+                            'OpenLayers.Geometry.MultiPoint'],
             dragAction: function(feature, initialAtt, escale, rotation) {
                 var radius = (initialAtt.radius || 6) * escale;
                 feature.attributes.radius = Math.max(6, radius);

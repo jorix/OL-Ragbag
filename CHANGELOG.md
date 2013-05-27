@@ -9,6 +9,28 @@ Development code that is considered stable in the is in the *gh-pages* branch (n
 (open for suggestions)
 
 
+### v0.5.1 under development.
+
+#### Improvements
+
+ * *Control/ModifyFeature-tools.js*
+   * Select and drag simultaneously for single multipoins (as a point)
+   * **TODO**: multi layer?
+
+#### Changes
+
+ * *Control/ModifyFeature-tools.js*
+   * Never uses the layer styleMap (ignores options: `vertexRenderIntent` and `virtualStyle`)
+   * Change the order of the tools in the toolbar.
+
+#### Bug fixes
+
+ * *Control/ModifyFeature-tools.js*
+   * Zooming while dragging a tool form toolbar not fired event *"featuremodified"*.
+   * Zooming the drag tool is located above the vertices.
+   * "point" tool does not move with the point feature (using multipoint)
+   * **TODO**: Apply [OL-984](https://github.com/openlayers/openlayers/pull/984)
+
 ### [v0.5.0](https://github.com/jorix/OL-Ragbag/tree/v0.5.0)
 
 #### Improvements

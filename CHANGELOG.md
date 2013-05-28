@@ -15,6 +15,7 @@ Development code that is considered stable in the is in the *gh-pages* branch (n
 
  * *Control/ModifyFeature-tools.js*
    * Select and drag simultaneously for single multipoins (as a point)
+   * The position of the toolbar conforms to size of the point feature.
    * **TODO**: multi layer?
 
 #### Changes

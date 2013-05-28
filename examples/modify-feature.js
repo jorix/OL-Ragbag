@@ -7,16 +7,6 @@ OpenLayers.Layer.Vector.prototype.renderers = renderer ?
                                     [renderer] :
                                     OpenLayers.Layer.Vector.prototype.renderers;
 
-OpenLayers.Util.extend(OpenLayers.Feature.Vector.style['default'], {
-    strokeWidth: 3,
-    graphicName: 'triangle',
-    pointRadius: '${radius}',
-    rotation: '${angle}'
-});
-OpenLayers.Util.extend(OpenLayers.Feature.Vector.style['select'], {
-    pointRadius: '${radius}'
-});
-
 // Create Objects
 // --------------
 
@@ -32,7 +22,21 @@ if (window.console && window.console.log) {
 }
 
 // Create the vectorial layer
-var vectorLayer = new OpenLayers.Layer.Vector('Vector Layer');
+var vectorLayer = new OpenLayers.Layer.Vector('Vector Layer', {
+    styleMap: new OpenLayers.StyleMap({
+        'default': OpenLayers.Util.applyDefaults({
+                strokeWidth: 3,
+                graphicName: 'triangle',
+                pointRadius: '${radius}',
+                rotation: '${angle}'
+            }, OpenLayers.Feature.Vector.style['default']
+        ),
+        'select': OpenLayers.Util.applyDefaults({
+                pointRadius: '${radius}'
+            }, OpenLayers.Feature.Vector.style['select']
+        )
+    })
+});
 vectorLayer.events.on({
     'beforefeaturemodified': reportEvent,
     'featuremodified': reportEvent,

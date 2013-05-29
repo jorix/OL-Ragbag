@@ -4,14 +4,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="lang" content="en">
     <meta name="author" content="Jorix">
-    <meta name="description" content="Usage example of ModifyFeature control for editing deleting and modify attributes of vector features.">
-    <meta name="keywords" content="OpenLayers, vertices, draw, drawing, modify, delete, attributes">
+    <meta name="description" content="Usage example of the ModifyFeature adaptation that is independent of the layer style and allows delete features.">
+    <meta name="keywords" content="OpenLayers, ModifyFeature, delete, style, styleMap">
     <link rel="stylesheet" href="http://jorix.github.com/OL-Ragbag/examples/github-pages/forkme_banner.css" type="text/css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>Example of OpenLayers to Modify and Delete features</title>
+    <title>Example of the ModifyFeature adaptation: Independent of the layer style and allows delete features.</title>
 
     <link rel="stylesheet" href="http://www.openlayers.org/dev/theme/default/style.css" type="text/css">
     <link rel="stylesheet" href="http://www.openlayers.org/dev/examples/style.css" type="text/css">
@@ -29,12 +29,13 @@
 
   </head>
   <body>
-    <h1 id="title">Example of OpenLayers to edit delete and modify attributes of vector features.</h1>
+    <h1 id="title">The ModifyFeature adaptation is independent of the layer style and allows delete features.</h1>
     <a id="forkme_banner" href="https://github.com/jorix/OL-Ragbag#improve-drawing-and-editing-tools-adding-behaviors">View on GitHub</a>
-    <div id="tags">vertices, draw, drawing, modify, delete</div>
+    <div id="tags">ModifyFeature, vertices, modify, delete, style, styleMap</div>
     <div id="shortdesc">
-        <p>Is obtained an improvement of usability by separating the tools and allowing a different icon for each tool, and empowers to use &lt;esc-key&gt; to cancel the current drag and remove last vertex added.</p>
-        <p>Also allows a delete tool and add custom tools (eg to modify attributes: see points on this example, or close a line as a ring: see lines)</p>
+        <p>This adaptation of the OL ModifyFeature is completely independent of the layer styleMap and brings its default styles, these styles are conigurables.</p>
+        <p>Is obtained an improvement of usability by separating the tools and allowing a different icon for each tool.</p>
+        <p>Also allows a delete tool and add custom tools (eg to modify attributes: see points on this example, or close a line as a ring: see lines) And empowers to use &lt;esc-key&gt; to cancel the current drag.</p>
     </div>
     <div id="map" class="smallmap"></div>
     <div id="controls">

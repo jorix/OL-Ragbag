@@ -23,6 +23,7 @@ Development code that is considered stable in the is in the *gh-pages* branch (n
  * *Control/ModifyFeature-tools.js*
    * Never uses the layer styleMap (ignores options: `vertexRenderIntent` and `virtualStyle`)
    * Change the order of the tools in the toolbar.
+   * Drag has been optimized considering the Canvas renderer.
 
 #### Bug fixes
 

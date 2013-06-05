@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="lang" content="en">
+    <meta name="author" content="Jorix">
+    <meta name="description" content="Usage example of the ModifyFeature adaptation that is independent of the layer style and allows delete features.">
+    <meta name="keywords" content="OpenLayers, ModifyFeature, delete, style, styleMap">
+    <link rel="stylesheet" href="http://jorix.github.com/OL-Ragbag/examples/github-pages/forkme_banner.css" type="text/css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>Example of the ModifyFeature adaptation: Independent of the layer style and allows ...</title>
+
+    <link rel="stylesheet" href="http://www.openlayers.org/dev/theme/default/style.css" type="text/css">
+    <link rel="stylesheet" href="http://www.openlayers.org/dev/examples/style.css" type="text/css">
+    <style type="text/css">
+        #controlToggle {padding-left: 1em;}
+        #controlToggle li {list-style: none;}
+        .inline li {display: inline};
+    </style>
+
+    <script src="http://www.openlayers.org/dev/OpenLayers.js"></script>
+    <!-- To improve editing by separate and add delete and custom tools and allows undo by <esc-key> -->
+    <script src="../lib/Ragbag/Control/ModifyFeature-tools.js"></script>
+    <!-- To improve drawing tools to allow undo by <esc-key> -->
+    <script src="../lib/Ragbag/Handler/Path-patch.js"></script>
+
+  </head>
+  <body>
+    <h1 id="title">A ModifyFeature adaptation that allows ...</h1>
+    <a id="forkme_banner" href="https://github.com/jorix/OL-Ragbag#improve-drawing-and-editing-tools-adding-behaviors">View on GitHub</a>
+    <div id="tags">ModifyFeature, vertices, modify, delete, style, styleMap</div>
+    <div id="shortdesc">
+        <p>This adaptation of the OL ModifyFeature is ...</p>
+    </div>
+    <div id="map" class="smallmap"></div>
+    <div id="controls">
+        <ul id="controlToggle">
+            <li>
+                <input type="radio" name="type" value="none" id="noneToggle" onclick="toggleControl(this);" checked="checked">
+                <label for="noneToggle">none</label>
+            </li>
+            <li>
+                <input type="radio" name="type" value="bottom" id="bottomLayer" onclick="toggleControl(this);">
+                <label for="bottomLayer">draw on bottom layer (blue)</label>
+            </li>
+            <li>
+                <input type="radio" name="type" value="middle" id="middleLayer" onclick="toggleControl(this);">
+                <label for="middleLayer">draw on middle layer (red)</label>
+            </li>
+            <li>
+                <input type="radio" name="type" value="top" id="topLayer" onclick="toggleControl(this);">
+                <label for="topLayer">draw on top layer (green)</label>
+            </li>
+            <li>
+                <input type="radio" name="type" value="modify" id="modifyToggle" onclick="toggleControl(this);">
+                <label for="modifyToggle">modify feature</label>
+            </li>
+        </ul>
+    </div>
+    <div id="docs">
+        <p>
+            View the <a href="modify-feature-multilayer.js" target="_blank">modify-feature-multilayer.js</a> 
+            source to see how this is done.
+        </p>
+    </div>
+    <script src="modify-feature-multilayer.js"></script>
+  </body>
+</html>

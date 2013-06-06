@@ -13,6 +13,7 @@ The components:
     * Remove last added point by *esc-key* (or delete it if no more points to remove)
   * Extends *ModifyFeature* control behaviors:
     * Provided by [ModifyFeature-tools.js](lib/Ragbag/Control/ModifyFeature-tools.js)
+    * Allows usage multilayer.
     * Allow delete a feature that have been selected for modification by a button.
     * Cancel a drag pressing *esc-key*.
     * Separate representation for each tool (rotate, resize ...)
@@ -22,6 +23,8 @@ The components:
     * Allows add custom tools (eg drag attributes as a angle attribute of a point)
 
 See example [modify-feature.html](http://jorix.github.io/OL-Ragbag/examples/modify-feature.html)
+
+See example of multilayer usage [modify-feature-multilayer.html](http://jorix.github.io/OL-Ragbag/examples/modify-feature-multilayer.html)
 
 ## Extends KML format to load StyleMap with *"normal"* and *"highlight"*
 

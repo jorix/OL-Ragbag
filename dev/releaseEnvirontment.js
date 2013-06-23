@@ -4,7 +4,7 @@
 /**
  * Class: releaseEnvironment
  *
- * Loads OpenLayers from 2.9 to 2.12 &amp; dev releases and can choose between
+ * Loads OpenLayers from 2.9 to 2.13 and dev releases and can choose between
  *     the compressed version or lib and add patches or not.
  *
  * THIS CODE IS ONLY INTENDED TO HELP MAKE TESTS AND DEBUGGING.
@@ -15,7 +15,7 @@
  * Loads selected OpenLayers release as instructed in URL parameters.
  *
  * URL parameters:
- *  - release: "dev", "2.12" ... "2.9"
+ *  - release: "dev", "2.13" ... "2.9"
  *  - lib: Use lib for debug (true if `lib` parameter exists in the URL)
  *  - patch: Use aditional sources on `patches` option (true if `patch`
  *      parameter exists in the URL)
@@ -82,6 +82,7 @@ function releaseEnvironment(options) {
     // releases
     var releases = {
         'dev': 'http://www.openlayers.org/dev',
+        '2.13': 'http://dev.openlayers.org/releases/OpenLayers-2.13',
         '2.12': 'http://dev.openlayers.org/releases/OpenLayers-2.12',
         '2.11': 'http://dev.openlayers.org/releases/OpenLayers-2.11',
         '2.10': 'http://dev.openlayers.org/releases/OpenLayers-2.10',

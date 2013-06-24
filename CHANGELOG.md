@@ -17,6 +17,7 @@ Development code that is considered stable in the is in the *gh-pages* branch (n
    * Select and drag simultaneously for single multipoins (as a point)
    * The position of the toolbar conforms to size of the point feature.
    * Support modify multilayer.
+   * Control also acts if before activation there are other layers moved on top (due to SelecFeature or DragFeature controls)
 
 #### Changes
 

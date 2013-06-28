@@ -104,6 +104,23 @@
             source to see how this is done.
         </p>
     </div>
+    <script>
+        // If patches=[(no)|draw]: To allow use original OL ModifyFeature
+        //                         requires define ModifyFeature_styles, so:
+        OpenLayers.Control.ModifyFeature_styles =
+                                  OpenLayers.Control.ModifyFeature_styles || {};
+    </script>
     <script src="modify-feature.js"></script>
+    <script>
+        // If patches=[(no)|draw]: To allow use original OL ModifyFeature
+        //                         requires innore `pointRadius = '${radius}'`,
+        //                         so:
+        if (!OpenLayers.Control.ModifyFeature_styles.vertex) {
+            vectorLayer.styleMap.styles['default'].defaultStyle.pointRadius =
+                                                                            "6";
+            vectorLayer.styleMap.styles.select.defaultStyle.pointRadius = "6";
+            controls.modify.virtualStyle.pointRadius = "6";
+        }
+    </script>
   </body>
 </html>

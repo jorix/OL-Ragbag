@@ -9,7 +9,7 @@ Development code that is considered stable in the is in the *gh-pages* branch (n
 (open for suggestions)
 
 
-### v0.5.1 under development.
+### [v0.6.0](https://github.com/jorix/OL-Ragbag/tree/v0.6.0)
 
 #### Improvements
 

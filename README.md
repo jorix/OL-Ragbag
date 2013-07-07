@@ -7,6 +7,9 @@ OpenLayers is powerful and versatile but sometimes difficult to use. This reposi
    * [Control.ModifyFeature](#extends-modifyfeature-control): Multiple improvements.
  * [Format.KML](#extends-kml-format-for-allow-features-highlighting): Allows highlight features.
  * [Strategy.Cluster](#centeredcluster-strategy): Centering the clusters.
+ * Components in other jorix's repositories.
+   * [OL-FeaturePopups](https://github.com/jorix/OL-FeaturePopups): Automate selection and show popups using templates.
+   * [OL-DynamicMeasure](https://github.com/jorix/OL-DynamicMeasure): Show measurements at the cursor.
 
 The components:
 ==============

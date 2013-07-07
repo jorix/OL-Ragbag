@@ -1,34 +1,46 @@
-A ragbag for use with OpenLayers
-================================
+Ragbag of components for use with OpenLayers
+============================================
 
-This mixed bag containing several components, which are not related to each other. 
+OpenLayers is powerful and versatile but sometimes difficult to use. This repository contains various components that facilitate its use in specific aspects, but without renouncing the possibility of customization.
+ * [Improve drawing and editing tools](#improve-drawing-and-editing-tools)
+   * [Control.DrawFeature](#extends-path--polygon-handlers): Allows *esc-key* to cancel addition of last vertex.
+   * [Control.ModifyFeature](#extends-modifyfeature-control): Multiple improvements.
+ * [Format.KML](#extends-kml-format-for-allow-features-highlighting): Allows highlight features.
+ * [Strategy.Cluster](#centeredcluster-strategy): Centering the clusters.
 
 The components:
 ==============
 
-## Improve drawing and editing tools adding behaviors
+## Improve drawing and editing tools.
 
-  * Extends *Path* & *Polygon* handlers:
-    * Provided by [Path-patch.js](lib/Ragbag/Handler/Path-patch.js)
-    * Remove last added point by *esc-key* (or delete it if no more points to remove)
-  * Extends *ModifyFeature* control behaviors:
-    * Provided by [ModifyFeature-tools.js](lib/Ragbag/Control/ModifyFeature-tools.js)
-    * Allows usage multilayer.
-    * Allow delete a feature that have been selected for modification by a button.
-    * Cancel a drag pressing *esc-key*.
-    * Separate representation for each tool (rotate, resize ...)
-    * Use icons to identify the tools.
-    * Configurable styles are used to show the tools (independent of the layer *styleMap*)
-    * Also uses Configurable styles to show vertices (independents of the layer *styleMap*)
-    * Allows add custom tools (eg drag attributes as a angle attribute of a point)
+### Extends *Path* & *Polygon* handlers.
+  * Cancels addition of last vertex by *esc-key*
+  * Centering the first vertex the feature is deleted.
+  * (Provided by [Path-patch.js](lib/Ragbag/Handler/Path-patch.js))
 
-See example [modify-feature.html](http://jorix.github.io/OL-Ragbag/examples/modify-feature.html)
+### Extends *ModifyFeature* control.
+  * Allows usage multilayer also using SelectFeature.
+  * Allow delete a feature that have been selected for modification (by a button)
+  * Cancel a drag pressing *esc-key*.
+  * Separate representation for each tool (rotate, resize ...)
+  * Use icons to identify the tools.
+  * Configurable styles are used to show the tools (independent of the layer *styleMap*)
+  * Also uses Configurable styles to show vertices (independents of the layer *styleMap*)
+  * Allows add custom tools (eg drag attributes as a angle attribute of a point)
+  * (Provided by [ModifyFeature-tools.js](lib/Ragbag/Control/ModifyFeature-tools.js))
+
+See examples:
+  * Draw & modify and custom tools [modify-feature.html](http://jorix.github.io/OL-Ragbag/examples/modify-feature.html)
+  * Multilayer usage without SelectFeature control [modify-feature-multilayer.html](http://jorix.github.io/OL-Ragbag/examples/modify-feature-multilayer.html)
+  * Multilayer usage with SelectFeature control [modify-feature-selectFeature.html](http://jorix.github.io/OL-Ragbag/examples/modify-feature-selectFeature.html)
 
 See example of multilayer usage [modify-feature-multilayer.html](http://jorix.github.io/OL-Ragbag/examples/modify-feature-multilayer.html)
 
-## Extends KML format to load StyleMap with *"normal"* and *"highlight"*
+## Extends KML format for allow features highlighting.
 
+Allows use both *"normal"* and *"highlight"* styles from KML using with *extracStyles:true*
   * See example [sundials.html](http://jorix.github.io/OL-Ragbag/examples/sundials.html)
+  * (Provided by [KML-patch.js](lib/Ragbag/Format/KML-patch.js))
 
 ## *CenteredCluster* strategy
 
@@ -41,6 +53,7 @@ The `CenteredCluster` proposal uses the OL algorithm as the main piece to group 
 NOTE: This represents a considerable increase of the calculations to be performed, but has been done a implementation to optimize performance, so in the majority of cases `CenteredCluster` is as fast as than OL Cluster strategy.
 
  * See example [strategy-centered-cluster-log-timed.html](http://jorix.github.io/OL-Ragbag/examples/strategy-centered-cluster-log-timed.html) (comparison between `CenteredCluster` and OL Cluster strategies)
+ * (Provided by [CenteredCluster.js](lib/Ragbag/Strategy/CenteredCluster.js))
  
 ### Other improvements
 
@@ -69,7 +82,7 @@ See also **OL-ragbag API documentation**:
 
 Compatibility with OpenLayers releases:
 --------------------------------------
-The components (if not stated otherwise in component description) works correctly with release 2.11 2.12 and the OL development version.
+The components (if not stated otherwise in component description) works correctly with release from 2.11 to 2.13 and the OL development version.
 
 NOTES: 
  * Most of the examples used are adaptations of OpenLayers examples (this examples have their original name)

@@ -19,6 +19,7 @@ Development code that is considered stable in the is in the *gh-pages* branch (n
    * Support modify multilayer.
    * Control also acts if before activation there are other layers moved on top (due to SelecFeature or DragFeature controls)
    * Offers two options for selection by pressing (default) or releasing when *selectOnUp* is true.
+   * Easy select feature programmatically also using multilayer by SelecFeature.
 
 #### Changes
 

@@ -13,28 +13,29 @@
 
     <title>Example of the ModifyFeature adaptation: Usage multilayer</title>
 
-    <link rel="stylesheet" href="http://www.openlayers.org/dev/theme/default/style.css" type="text/css">
-    <link rel="stylesheet" href="http://www.openlayers.org/dev/examples/style.css" type="text/css">
+    <script src="http://jorix.github.com/OL-Ragbag/dev/releaseEnvirontment.js"></script>
+    <script>
+        var release = new releaseEnvironment({
+            defaults: {patch: 'yes'},
+            patches: ["../lib/Ragbag/Control/ModifyFeature-tools.js"]
+        });
+        release.writeScripts();
+    </script>
     <style type="text/css">
         #controlToggle {padding-left: 1em;}
         #controlToggle li {list-style: none;}
         .inline li {display: inline};
     </style>
 
-    <script src="http://www.openlayers.org/dev/OpenLayers.js"></script>
-    <!-- To improve editing by separate and add delete and custom tools and allows undo by <esc-key> -->
-    <script src="../lib/Ragbag/Control/ModifyFeature-tools.js"></script>
-    <!-- To improve drawing tools to allow undo by <esc-key> -->
-    <script src="../lib/Ragbag/Handler/Path-patch.js"></script>
-
   </head>
   <body>
-    <h1 id="title">A ModifyFeature adaptation that allows usage multilayer.</h1>
+    <h1 id="title">??</h1>
     <a id="forkme_banner" href="https://github.com/jorix/OL-Ragbag#improve-drawing-and-editing-tools-adding-behaviors">View on GitHub</a>
-    <div id="tags">ModifyFeature, multilayer</div>
-    <div id="shortdesc">
-        <p>This adaptation of the OL ModifyFeature allows usage multilayer without specifying any default layer.</p>
-    </div>
+    <div id="environmentForm"></div>
+    <script>
+        release.writeSelectionForm("environmentForm", "title");
+    </script>
+
     <div id="map" class="smallmap"></div>
     <div id="controls">
         <ul id="controlToggle">

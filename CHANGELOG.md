@@ -9,6 +9,12 @@ On development
 
 (open for suggestions)
 
+[v0.6.1](https://github.com/jorix/OL-Ragbag/tree/v0.6.1)
+--------------------------------------------------------
+
+#### Bug fixes
+ * *Control/ModifyFeature-tools.js*
+   * After a zoom the tools are not refreshed (when a feature is selected)
 
 [v0.6.0](https://github.com/jorix/OL-Ragbag/tree/v0.6.0)
 --------------------------------------------------------

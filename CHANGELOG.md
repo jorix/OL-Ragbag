@@ -10,6 +10,14 @@ On development
 (open for suggestions)
 
 
+v0.7.0 (On development)
+-----------------------
+
+#### Improvements
+ * *Control/ModifyFeature-tools.js*
+   * Set tools position near to point more on top.
+
+
 [v0.6.0](https://github.com/jorix/OL-Ragbag/tree/v0.6.0)
 --------------------------------------------------------
 

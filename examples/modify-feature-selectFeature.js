@@ -51,7 +51,7 @@ var selLayers = [bottomLayer, middleLayer, topLayer];
 var selFeature = new OpenLayers.Control.SelectFeature(selLayers);
 map.addControl(selFeature);
 selFeature.activate();
-selListener = {
+var selListener = {
     // It is not necessary listen 'featureselected' event.
     'featureselected': function(evt) {
         controls.modify.selectFeature(evt.feature);

@@ -15,12 +15,11 @@
 
     <script src="http://jorix.github.com/OL-Ragbag/dev/releaseEnvirontment.js"></script>
     <script>
-        var release = new releaseEnvironment({
-            defaults: {patch: 'yes'},
-            patches: ["../lib/Ragbag/Control/ModifyFeature-tools.js"]
-        });
+        var release = new releaseEnvironment();
         release.writeScripts();
     </script>
+    <script src="../lib/Ragbag/Control/ModifyFeature-tools.js"></script>
+
     <style type="text/css">
         #controlToggle {padding-left: 1em;}
         #controlToggle li {list-style: none;}

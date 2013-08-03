@@ -20,6 +20,7 @@ v0.7.0 (On development)
 #### Changes
  * *Control/ModifyFeature-tools.js*
    * Is left to use *useVirtualPoint* property.
+   * Method *collectVertices* agglutinates all code related to create tools and vertices.
  * */dev/releaseEnvirontment.js*
    * Use new OpenLayers v2.13.1
 

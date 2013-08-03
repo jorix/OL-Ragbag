@@ -17,6 +17,12 @@ v0.7.0 (On development)
  * *Control/ModifyFeature-tools.js*
    * Set tools position near to point more on top.
 
+#### Changes
+ * *Control/ModifyFeature-tools.js*
+   * Is left to use *useVirtualPoint* property.
+ * */dev/releaseEnvirontment.js*
+   * Use new OpenLayers v2.13.1
+
 
 [v0.6.1](https://github.com/jorix/OL-Ragbag/tree/v0.6.1)
 --------------------------------------------------------

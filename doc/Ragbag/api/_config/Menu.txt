@@ -2,7 +2,7 @@ Format: 1.52
 
 
 Title: OL-Ragbag
-SubTitle: Compatible with OpenLayers from 2.11 to 2.13 &amp; dev
+SubTitle: Compatible with OpenLayers from 2.11 to 2.13.1 &amp; dev
 
 Footer: <a href="https://github.com/jorix">View on github.com/jorix</a><a id="forkme_banner" href="https://github.com/jorix/OL-Ragbag">View on GitHub</a>
 
@@ -25,7 +25,7 @@ Footer: <a href="https://github.com/jorix">View on github.com/jorix</a><a id="fo
 # These are indexes you deleted, so Natural Docs will not add them again
 # unless you remove them from this line.
 
-Don't Index: General, Functions, Constructor, Files, Constants, Classes, Properties
+Don't Index: General, Constructor, Functions, Files, Classes, Constants, Properties
 
 
 # --------------------------------------------------------------------------

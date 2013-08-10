@@ -10,8 +10,8 @@ On development
 (open for suggestions)
 
 
-v0.7.0 (On development)
------------------------
+[v0.7.0](https://github.com/jorix/OL-Ragbag/tree/v0.7.0)
+--------------------------------------------------------
 
 #### Improvements
  * *Control/ModifyFeature-tools.js*

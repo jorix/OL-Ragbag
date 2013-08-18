@@ -1,3 +1,3 @@
 (function() {
-    releaseEnvironment_instance._writePatchesScripts();
+    window.releaseEnvironment_instance._writePatchesScripts();
 })();

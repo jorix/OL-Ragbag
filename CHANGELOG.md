@@ -10,6 +10,14 @@ On development
 (open for suggestions)
 
 
+Pending to release a version.
+-----------------------------
+
+#### Bug fixes
+ * */dev/releaseEnvirontment.js*
+   * Ensure that patches are loaded after OpenLayers on IE8 (or lower) when lib option is used.
+
+
 [v0.7.0](https://github.com/jorix/OL-Ragbag/tree/v0.7.0)
 --------------------------------------------------------
 

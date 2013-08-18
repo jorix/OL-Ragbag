@@ -104,6 +104,25 @@ function releaseEnvironment(options) {
             window.location.hash;
         return url;
     };
+    
+    // Get script folder location
+    var _getScriptFolder = function() {
+        var pattern = /(^|.*?\/)releaseEnvirontment\.js(\?|$)/i,
+            scripts = document.getElementsByTagName('script'),
+            folder = '';
+        for (var i=0, len=scripts.length; i<len; i++) {
+            var src = scripts[i].getAttribute('src');
+            if (src) {
+                var matches = src.match(pattern);
+                if (matches) {
+                    folder = matches[1];
+                    break;
+                }
+            }
+        }
+        return folder;
+    };
+
     if (iSearch) {
         var regRelease = /&*release=([\w\.]+)&?.*/i,
             regPatch = /&*patch=(\w+)&?.*/i,
@@ -164,19 +183,33 @@ function releaseEnvironment(options) {
         } else {
             scripts.push('<script src="' + urlOL + '/OpenLayers.js"></script>');
         }
+        document.write(scripts.join('\n'));
 
         if (iPatch && iPatches) {
+            var _patchesScripts = [];
             var patchesArray = (iPatches instanceof Array) ?
                                 iPatches :
                                 iPatches[iPatch];
             if (patchesArray) {
                 for (var i = 0, len = patchesArray.length; i < len; i++) {
-                    scripts.push('<script src="' + patchesArray[i] +
+                    _patchesScripts.push('<script src="' + patchesArray[i] +
                                                                  '"></script>');
                 }
             }
+            if (iLib) {
+                this._writePatchesScripts = function(){
+                    document.write(_patchesScripts.join('\n'));
+                };
+                window.releaseEnvironment_instance = this;
+                document.write(
+                    '<script src="' +
+                        _getScriptFolder() +
+                        'releaseEnvirontment_writePatches.js"></script>'
+                );
+            } else {
+                document.write(_patchesScripts.join('\n'));
+            }
         }
-        document.write(scripts.join('\n'));
     }
 
     /**

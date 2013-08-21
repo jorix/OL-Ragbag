@@ -16,6 +16,8 @@ Pending to release a version.
 #### Bug fixes
  * */dev/releaseEnvirontment.js*
    * Ensure that patches are loaded after OpenLayers on IE8 (or lower) when lib option is used.
+ * *Control/ModifyFeature-tools.js*
+   * Allows use delkey on IE8 (OL-Pull#1091)
 
 
 [v0.7.0](https://github.com/jorix/OL-Ragbag/tree/v0.7.0)

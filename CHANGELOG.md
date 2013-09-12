@@ -10,8 +10,8 @@ On development
 (open for suggestions)
 
 
-Pending to release a version.
------------------------------
+[v0.7.1](https://github.com/jorix/OL-Ragbag/tree/v0.7.1)
+--------------------------------------------------------
 
 #### Bug fixes
  * */dev/releaseEnvirontment.js*

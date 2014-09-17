@@ -81,7 +81,7 @@ function releaseEnvironment(options) {
 
     // releases
     var releases = {
-        'dev': 'http://www.openlayers.org/dev',
+        'dev': 'http://dev.openlayers.org',
         '2.13.1': 'http://dev.openlayers.org/releases/OpenLayers-2.13.1',
         '2.12': 'http://dev.openlayers.org/releases/OpenLayers-2.12',
         '2.11': 'http://dev.openlayers.org/releases/OpenLayers-2.11',

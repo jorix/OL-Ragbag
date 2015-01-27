@@ -1,4 +1,4 @@
-/* Copyright 2012-2014 by Xavier Mamano, http://github.com/jorix/OL-Ragbag
+/* Copyright 2012-2015 by Xavier Mamano, http://github.com/jorix/OL-Ragbag
  * Published under MIT license. */
 
 /**

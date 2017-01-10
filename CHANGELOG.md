@@ -66,7 +66,7 @@ On development
    * Zooming while dragging a tool form toolbar not fired event *"featuremodified"*.
    * Zooming the drag tool is located above the vertices.
    * "point" tool does not move with the point feature (using multipoint)
-   * Apply [OL-984](https://github.com/openlayers/openlayers/pull/984)
+   * Apply [OL-984](https://github.com/openlayers/ol2/pull/984)
 
 
 [v0.5.0](https://github.com/jorix/OL-Ragbag/tree/v0.5.0)
